@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   password = true;
 
   loginDetails = {
-    mobile_no:'',
+    username:'',
     password:'',
     token:'57680',
     device_id:'7890890909t76'
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginClick(){
-    if(this.loginDetails.mobile_no !=''){
+    if(this.loginDetails.username !=''){
         if(this.loginDetails.password !=''){
           this.apiServices.login(this.loginDetails).subscribe(
               res =>{

@@ -3,7 +3,7 @@
         <div class="log-img-shape">
             <img src="../../../assets/img/login-bg1.jpg" alt="login bg">
             <div class="log-top">
-                <h1>User Login</h1>
+                <h1>Agent Login</h1>
                 <h5>Login to your account</h5>
             </div>
         </div>
@@ -14,8 +14,8 @@
             <p>Welcome back ! Sign in to continue</p>
             <form>
                 <mat-form-field appearance="outline">
-                    <mat-label>Mobile Number</mat-label>
-                    <input matInput type="text" (keypress)="isNumberKey($event)" name="mobile_no" [(ngModel)] ='loginDetails.mobile_no' maxlength="10" >
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text" name="username" [(ngModel)] ='loginDetails.username' maxlength="10" >
                 </mat-form-field>
 
                 <mat-form-field class="textbox-w-icon" appearance="outline">
