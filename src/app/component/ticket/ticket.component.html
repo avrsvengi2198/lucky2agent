@@ -5,7 +5,7 @@
         </div>
 
         <div class="page-title">
-            <h5>Ticket</h5>
+            <h5>Add Ticket</h5>
         </div>
     </div>
 
@@ -16,67 +16,46 @@
     </div>
 </div>
 
-<div class="ticket-page">
-    <div class="page-class">
+<div class="page-class">
+    <div class="profile-page">
+        <div class="profile-form">
+            <form (submit)="createTicket()">
+                <mat-form-field>
+                    <mat-label>Select Lottery</mat-label>
+                    <mat-select  (selectionChange)="getParticlot()" name="lottery_id" [(ngModel)]="details.lottery_id"  required >
+                      <div *ngFor="let lott of Lottery">
+                        <mat-option value="{{lott.id}}" >{{lott.lottery_name}}</mat-option>
+                      </div>
+                    </mat-select>
+                  </mat-form-field>
 
-        <!-- Ticket starts -->
-        <div class="ticket-card">
-            <div class="ticket-info">
-                <div class="tick-details">
-                    <h4>Ticket New Draw #1</h4>
-                    <p>12-11-2020 12:00:00 PM</p>
-    
-                    <div class="ticket-count">
-                        <h5>Total Tickets - 1</h5>
-                    </div>
-                </div>
-            </div>
+                <mat-form-field>
+                    <mat-label>User Mobile</mat-label>
+                    <input matInput name="user" [(ngModel)]="details.user" type="text" (change)="getName()" required >
+                  </mat-form-field>
 
-            <div class="tick-btn">
-                <button (click)="openPopup();">Details</button>
-            </div>
+                  <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput name="uname" [(ngModel)]="details.uname" type="text"  readonly >
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>No.of Tickets</mat-label>
+                    <input matInput id="tCount" name="ticket_count" [(ngModel)]="details.ticket_count" type="text" (change)="checkMaxcount()"  required >
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Select Type</mat-label>
+                    <mat-select name="type" id="stype" [(ngModel)]="details.type" (selectionChange)="showTicket()" required >
+                        <mat-option value="Random">Random Creation</mat-option>
+                        <mat-option value="Manual">Manual Creation</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                <button type="submit" class="btn-style" ><i class="fa fa-check"></i>Submit</button>
+                
+            </form>
         </div>
-        <!-- Ticket Ends -->
-
-        <!-- Ticket starts -->
-        <div class="ticket-card">
-            <div class="ticket-info">
-                <div class="tick-details">
-                    <h4>Ticket New Draw #2</h4>
-                    <p>12-11-2020 12:00:00 PM</p>
-    
-                    <div class="ticket-count">
-                        <h5>Total Tickets - 2</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tick-btn">
-                <button (click)="openPopup();">Details</button>
-            </div>
-        </div>
-        <!-- Ticket Ends -->
-
-
-        <!-- Ticket starts -->
-        <div class="ticket-card">
-            <div class="ticket-info">
-                <div class="tick-details">
-                    <h4>Ticket New Draw #3</h4>
-                    <p>12-11-2020 12:00:00 PM</p>
-    
-                    <div class="ticket-count">
-                        <h5>Total Tickets - 2</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tick-btn">
-                <button (click)="openPopup();">Details</button>
-            </div>
-        </div>
-        <!-- Ticket Ends -->
-
     </div>
 </div>
 
@@ -85,8 +64,16 @@
     <div class="popup">
         <button class="close-bar" (click)="closePopup();"></button>
          <div class="cm-sheet-content">
-            <h4><i class="fas fa-ticket-alt"></i>Ticket New Draw #1</h4>
-            <p>Duis finibus tincidunt arcu sodales ornare. Integer tristique quam eu ex fermentum, in aliquet leo iaculis. Proin in varius libero, vel tincidunt sapien. Maecenas congue,</p>
+            <h4><i class="fas fa-ticket-alt"></i>Ticket Count : {{details.ticket_count}} </h4>
+            
+            <ul>
+                <li *ngFor="let tick of Ticket">
+                    <div>
+                        <h4>{{tick}}</h4>
+                    </div>
+                </li>
+            </ul>
+
          </div>
     </div>
 </div>
