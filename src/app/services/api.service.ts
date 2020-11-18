@@ -75,4 +75,45 @@ export class ApiService {
 	}
 
 
+	/***
+	 * Agent Start
+	 */
+
+	agentAdd(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/agent.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+	agentList(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/agent_list.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+	agentUpdate(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/agent_edit.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+	/***
+	 * Agent End
+	 */
+
+
+	 /***
+	 * Users Start
+	 */
+
+	usersAdd(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/user.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+	usersList(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/user_list.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+	usersUpdate(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/user_edit.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+	/***
+	 * Users End
+	 */
+
 }

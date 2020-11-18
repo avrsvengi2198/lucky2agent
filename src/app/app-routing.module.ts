@@ -9,6 +9,8 @@ import { LotteryWinnerComponent } from './component/lottery-winner/lottery-winne
 import { TicketComponent } from './component/ticket/ticket.component';
 import { ChangePasswordComponent } from './component/change-password/change-password.component';
 import { AuthGuard } from './auth.guard';
+import { AgentcreateComponent } from './component/agent/agentcreate/agentcreate.component';
+import { UsercreateComponent } from './component/users/usercreate/usercreate.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -18,7 +20,10 @@ const routes: Routes = [
   { path: 'profilev', component: ProfilevComponent ,canActivate: [AuthGuard]  },
   { path: 'lotteryWinner', component: LotteryWinnerComponent ,canActivate: [AuthGuard]  },
   { path: 'ticket', component: TicketComponent,canActivate: [AuthGuard] },
-  { path: 'changePassword', component: ChangePasswordComponent ,canActivate: [AuthGuard] }
+  { path: 'changePassword', component: ChangePasswordComponent ,canActivate: [AuthGuard] },
+  { path: 'agentAdd/:type/:id', component: AgentcreateComponent ,canActivate: [AuthGuard] },
+  { path: 'usersAdd/:type/:id', component: UsercreateComponent ,canActivate: [AuthGuard] }
+
 ];
 
 
