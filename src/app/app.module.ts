@@ -21,13 +21,21 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { from } from 'rxjs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AgentlistComponent } from './component/agent/agentlist/agentlist.component';
+import { AgentcreateComponent } from './component/agent/agentcreate/agentcreate.component';
+import { UserlistComponent } from './component/users/userlist/userlist.component';
+import { UsercreateComponent } from './component/users/usercreate/usercreate.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    MenuComponent
+    MenuComponent,
+    AgentlistComponent,
+    AgentcreateComponent,
+    UserlistComponent,
+    UsercreateComponent
   ],
   imports: [
     BrowserModule,
