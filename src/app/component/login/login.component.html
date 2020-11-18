@@ -1,0 +1,35 @@
+<div class="login-page">
+    <div class="login-bg-img">
+        <div class="log-img-shape">
+            <img src="../../../assets/img/login-bg1.jpg" alt="login bg">
+            <div class="log-top">
+                <h1>User Login</h1>
+                <h5>Login to your account</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-sec">
+        <div class="login-form">
+            <p>Welcome back ! Sign in to continue</p>
+            <form>
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput type="text" (keypress)="isNumberKey($event)" name="mobile_no" [(ngModel)] ='loginDetails.mobile_no' maxlength="10" >
+                </mat-form-field>
+
+                <mat-form-field class="textbox-w-icon" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="password ? 'password' : 'text'" [(ngModel)] ='loginDetails.password' name="password" >
+                    <button mat-icon-button matSuffix (click)="password = !password" [attr.aria-label]="'password'" [attr.aria-pressed]="password">
+                    <mat-icon>{{password ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <div class="text-center">
+                    <button class="login-btn" (click)="loginClick()" >Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

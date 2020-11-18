@@ -1,0 +1,137 @@
+<div class="app-menu" [ngClass]="menu ? 'menu-cls' : ''">
+    <app-menu></app-menu>
+    <div class="touch-menu-close" (click)="menuFunc();"></div>
+</div>
+
+<div class="home-layout">
+    <div class="home-bg"></div>
+
+    <div class="navbar home-nav">
+        <div class="navbar-left">
+            <div class="nav-left-icon">
+                <button (click)="menuFunc();"><i class="fas fa-bars"></i></button>
+            </div>
+    
+            <div class="page-title app-title">
+                Lucky
+            </div>
+        </div>
+    
+        <div class="navbar-right">
+            
+        </div>
+    </div>
+    
+    <div class="page-class">
+        <div class="user-detail-sec">
+            <div class="user-avatar">
+               {{getShortName(userDetails.name)}}
+            </div>
+
+            <div class="user-info">
+                <h4>{{userDetails.name}}</h4>
+                <p>{{userDetails.mobile_no}}</p>
+            </div>
+        </div>
+
+
+        <div class="grid-menu">
+            <div class="grid-col">
+                <a routerLink="/lotteryWinner">
+                    <div class="icon-grid-box">
+                        <img src="../../../assets/icon/withdraw.svg" alt="Lottery">
+                        <h5>Lottery</h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid-col">
+                <a routerLink="/ticket">
+                    <div class="icon-grid-box">
+                        <img src="../../../assets/icon/movie-tickets.svg" alt="Tickets">
+                        <h5>Tickets</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-sec winner-slider">
+            <div class="sub-header">
+                <div class="sec-title">
+                    <h4>Winners</h4>
+                </div>
+
+                <div class="sub-link-right">
+                    <a routerLink="/lotteryWinner">View All</a>
+                </div>
+            </div>
+
+
+            <div class="scroll-container">
+                <div class="scroll-stage">
+                    <div class="scroll-item">
+                        <a routerLink="#">
+                            <div class="scroll-content">
+                                <img src="../../../assets/icon/winner.svg" alt="winner">
+        
+                                <div class="scroll-dec">
+                                    <h5>Selvaraj Marimuthu</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="scroll-item">
+                        <a routerLink="#">
+                            <div class="scroll-content">
+                                <img src="../../../assets/icon/winner.svg" alt="winner">
+        
+                                <div class="scroll-dec">
+                                    <h5>Madhavan</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="scroll-item">
+                        <a routerLink="#">
+                            <div class="scroll-content">
+                                <img src="../../../assets/icon/winner.svg" alt="winner">
+        
+                                <div class="scroll-dec">
+                                    <h5>Saravana</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="scroll-item">
+                        <a routerLink="#">
+                            <div class="scroll-content">
+                                <img src="../../../assets/icon/winner.svg" alt="winner">
+        
+                                <div class="scroll-dec">
+                                    <h5>Vengadesh</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="scroll-item">
+                        <a routerLink="#">
+                            <div class="scroll-content">
+                                <img src="../../../assets/icon/winner.svg" alt="winner">
+        
+                                <div class="scroll-dec">
+                                    <h5>Vicky</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="nav-left-icon">
+            <a routerLink="/profilev"><i class="fas fa-arrow-left"></i></a>
+        </div>
+
+        <div class="page-title">
+            <h5>Edit Profile</h5>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="nav-right-icon">
+            <a (click)="updateUser()"><i class="fas fa-check"></i></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-class">
+    <div class="profile-page">
+        <div class="profile-form">
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.name" name="name">
+              </mat-form-field>
+    
+              <!-- <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text">
+              </mat-form-field>
+    
+              <mat-form-field>
+                <mat-label>Father Name</mat-label>
+                <input matInput type="text" >
+              </mat-form-field> -->
+              
+              <mat-form-field>
+                <mat-label>Mobile</mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.mobile_no" name="mobile_no" readonly >
+              </mat-form-field>
+
+              <!-- <mat-form-field>
+                <mat-label>WhatsApp No.</mat-label>
+                <input matInput type="text">
+              </mat-form-field>
+              
+              <div class="row-radio">
+                <label>Gender</label>
+                <mat-radio-group name="gender" aria-label="Select an option"  >
+                  <mat-radio-button value="Male">Male</mat-radio-button>
+                  <mat-radio-button value="Female">Female</mat-radio-button>
+                  <mat-radio-button value="Others">Others</mat-radio-button>
+                </mat-radio-group>
+              </div>
+    
+              <mat-form-field>
+                <mat-label>Date of Birth</mat-label> 
+                <input matInput type="text" >
+              </mat-form-field>
+    
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput type="text">
+              </mat-form-field> 
+    
+              <mat-form-field>
+                <mat-label>State</mat-label>
+                 <select matNativeControl required>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
+              </mat-form-field> -->
+    
+              <mat-form-field> 
+                <mat-label>City</mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.city" name="city" >
+              </mat-form-field>
+    
+              <mat-form-field>
+                <mat-label> A/C No </mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.bank_acc" name="bank_acc" >
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label> Bank Name </mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.bank_name" name="bank_name" >
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label> Branch Name </mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.branch_name" name="branch_name">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label> IFSC Code </mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.ifsc_code" name="ifsc_code" >
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label> Account Holder Name </mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.acc_name" name="acc_name">
+              </mat-form-field>
+        </div>
+    </div>
+</div>

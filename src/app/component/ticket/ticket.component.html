@@ -1,0 +1,92 @@
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="nav-left-icon">
+            <a routerLink="/home"><i class="fas fa-arrow-left"></i></a>
+        </div>
+
+        <div class="page-title">
+            <h5>Ticket</h5>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="nav-right-icon">
+            <i class="fas fa-ticket-alt"></i>
+        </div>
+    </div>
+</div>
+
+<div class="ticket-page">
+    <div class="page-class">
+
+        <!-- Ticket starts -->
+        <div class="ticket-card">
+            <div class="ticket-info">
+                <div class="tick-details">
+                    <h4>Ticket New Draw #1</h4>
+                    <p>12-11-2020 12:00:00 PM</p>
+    
+                    <div class="ticket-count">
+                        <h5>Total Tickets - 1</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tick-btn">
+                <button (click)="openPopup();">Details</button>
+            </div>
+        </div>
+        <!-- Ticket Ends -->
+
+        <!-- Ticket starts -->
+        <div class="ticket-card">
+            <div class="ticket-info">
+                <div class="tick-details">
+                    <h4>Ticket New Draw #2</h4>
+                    <p>12-11-2020 12:00:00 PM</p>
+    
+                    <div class="ticket-count">
+                        <h5>Total Tickets - 2</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tick-btn">
+                <button (click)="openPopup();">Details</button>
+            </div>
+        </div>
+        <!-- Ticket Ends -->
+
+
+        <!-- Ticket starts -->
+        <div class="ticket-card">
+            <div class="ticket-info">
+                <div class="tick-details">
+                    <h4>Ticket New Draw #3</h4>
+                    <p>12-11-2020 12:00:00 PM</p>
+    
+                    <div class="ticket-count">
+                        <h5>Total Tickets - 2</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tick-btn">
+                <button (click)="openPopup();">Details</button>
+            </div>
+        </div>
+        <!-- Ticket Ends -->
+
+    </div>
+</div>
+
+<div class="cm-bottom-sheet ticket-dts-sheet" [ngClass]="status ? 'open-checker' : 'close-checker'">
+    <div class="close-space" (click)="closePopup();"></div>                
+    <div class="popup">
+        <button class="close-bar" (click)="closePopup();"></button>
+         <div class="cm-sheet-content">
+            <h4><i class="fas fa-ticket-alt"></i>Ticket New Draw #1</h4>
+            <p>Duis finibus tincidunt arcu sodales ornare. Integer tristique quam eu ex fermentum, in aliquet leo iaculis. Proin in varius libero, vel tincidunt sapien. Maecenas congue,</p>
+         </div>
+    </div>
+</div>
