@@ -19,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MenuComponent } from './component/menu/menu.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { from } from 'rxjs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AgentlistComponent } from './component/agent/agentlist/agentlist.component';
@@ -53,7 +54,8 @@ import { UsercreateComponent } from './component/users/usercreate/usercreate.com
     MatIconModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [ApiService,AuthGuard],
   bootstrap: [AppComponent]

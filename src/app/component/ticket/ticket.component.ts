@@ -11,8 +11,9 @@ declare var $: any;
   styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent implements OnInit {
-  status:boolean = false; Lottery:any = [];
-  pLottory : any = []; Ticket : any = [];
+  status:boolean = false; Lottery:any = []; sTicket:any = [];
+  pLottory : any = []; Ticket : any = []; spinner:boolean = true;
+  availabelTick : number = 0; 
   getname = {
     mobile_no:''
   }
@@ -42,6 +43,7 @@ export class TicketComponent implements OnInit {
 
     this.apiService.lotteryList().subscribe(
       res =>{
+        this.spinner = false;
         this.Lottery = res.Response;
       },err => console.log(err)
     );
@@ -49,6 +51,44 @@ export class TicketComponent implements OnInit {
   }
 
   createTicket(){
+    if(this.details.user !=''){
+        if(this.details.lottery_id !=''){
+            if(this.details.ticket_count !=''){
+                if(this.sTicket.length !=0){
+                    let addTicks = {
+                      ticket_count:this.details.ticket_count,
+                      user:this.details.user,
+                      lottery_id:this.details.lottery_id,
+                      tickets:this.sTicket,
+                      ticket_type:this.details.type
+                    }
+                    this.apiService.addTicket(addTicks).subscribe(
+                      res => {
+                        this._snackBar.open(res.Message,'', {
+                          duration: 3000,
+                        });
+                        this.router.navigateByUrl('home');
+                      },err => console.log(err));
+                }else{
+                  this._snackBar.open('Select Lottery Type !!','', {
+                    duration: 3000,
+                  });
+                }
+            }else{
+              this._snackBar.open('Enter Ticket Count !!','', {
+                duration: 3000,
+              });
+            }
+        }else{
+          this._snackBar.open('Select Lottery !!','', {
+            duration: 3000,
+          });
+        }
+    }else{
+      this._snackBar.open('Enter Mobile No !!','', {
+        duration: 3000,
+      });
+    }
 
   }
 
@@ -76,32 +116,54 @@ export class TicketComponent implements OnInit {
   }
 
   //show ticket
-  showTicket(){
-    if(this.details.ticket_count !=''){
-      if(this.details.ticket_count > this.pLottory.max_count){
-        this._snackBar.open('You Enter Max.no of Ticket !','', {
-          duration: 3000,
-        });
-      }else{
-          this.Ticket = this.generateTicket();
-        if(this.details.type =="Manual"){
-            this.openPopup();
-        }else{
-          console.log(this.details.ticket_count);
-        }
-      }
-     
+  showTicket(args){
+    this.sTicket = [];
+    if(this.details.lottery_id !=''){
+      //check ticket count empty
+          if(this.details.ticket_count !=''){
+              //check ticket count max
+                if(Number(this.details.ticket_count) > Number(this.availabelTick)){
+                  this._snackBar.open('You Enter Max.no of Ticket !','', {
+                    duration: 3000,
+                  });
+                }else{
+                  if(this.details.type =="Manual"){
+                      this.openPopup();
+                  }else{
+                    for(let a = 0; a < Number(this.details.ticket_count);a++){
+                      let randTick = this.Ticket[Math.floor(Math.random() * this.Ticket.length)];                      
+                      this.sTicket.push(randTick);
+                    }
+                    console.log(this.sTicket);
+                  }
+               }
+          }else{
+            this.details.type = '';
+            $('#tCount').focus();
+            this._snackBar.open('Enter Ticket Count !!','', {
+              duration: 3000,
+            });
+          }
     }else{
-      $('#tCount').focus();
-      this._snackBar.open('Enter Ticket Count !!','', {
+      $('#lid').focus();
+      this._snackBar.open('Select Lottery !!','', {
         duration: 3000,
       });
+      this.details.type = '';
     }
+    
   }
 
+  
   //get particular lottry
   getParticlot(){
     if(this.details.lottery_id !=''){
+      let getT = {lottery_id:this.details.lottery_id}
+      this.apiService.getTickets(getT).subscribe(
+        res => {
+          this.Ticket = res.Response;
+          this.availabelTick = res.Message;
+        },err => console.log(err));
       this.pLottory = this.Lottery.find(element => element.id == this.details.lottery_id);
     }else{
       this._snackBar.open('Select Lottery !!','', {
@@ -110,7 +172,7 @@ export class TicketComponent implements OnInit {
     }
   }
 
- //generate ticket
+/* //generate ticket
  generateTicket(){
   let genTick = [];
    for(let i =1; i<= Number(this.pLottory.max_count);i++){
@@ -118,7 +180,7 @@ export class TicketComponent implements OnInit {
     genTick.push(gtick);
    }
    return genTick;
- }
+ }*/
 
 pad(num, size) {
   let s = num+"";
@@ -128,13 +190,36 @@ pad(num, size) {
 
 //check max count
 checkMaxcount(){
-  if(this.details.ticket_count > this.pLottory.max_count){
+  if( Number(this.availabelTick) <= Number(this.details.ticket_count) ){
     $('#tCount').val('');
     $('#tCount').focus();
     this._snackBar.open('You Enter Max.no of Ticket !','', {
       duration: 3000,
     });
   }
+}
+
+storeTicket(pin,event){
+    if(event.currentTarget.checked){
+      this.sTicket.push(pin);
+      if(this.details.ticket_count < this.sTicket.length){
+        this.sTicket.forEach((element,index) => {
+        if(element == pin){
+          this.sTicket.splice(index,1)
+        }
+      });
+        event.currentTarget.checked =false;
+        this._snackBar.open('Already '+this.details.ticket_count+' Tickets Picked !','', {
+          duration: 2000,
+        });
+      }
+    }else{
+      this.sTicket.forEach((element,index) => {
+        if(element == pin){
+          this.sTicket.splice(index,1)
+        }
+      });
+    }
 }
 
 

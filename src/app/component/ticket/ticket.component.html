@@ -17,12 +17,15 @@
 </div>
 
 <div class="page-class">
+    <div class="load-spinner" *ngIf="spinner">
+        <mat-spinner strokeWidth="3" diameter="35" class="spinner-circle" ></mat-spinner>
+    </div>
     <div class="profile-page">
         <div class="profile-form">
             <form (submit)="createTicket()">
                 <mat-form-field>
                     <mat-label>Select Lottery</mat-label>
-                    <mat-select  (selectionChange)="getParticlot()" name="lottery_id" [(ngModel)]="details.lottery_id"  required >
+                    <mat-select  (selectionChange)="getParticlot()" name="lottery_id" [(ngModel)]="details.lottery_id" id="lid"  required >
                       <div *ngFor="let lott of Lottery">
                         <mat-option value="{{lott.id}}" >{{lott.lottery_name}}</mat-option>
                       </div>
@@ -46,13 +49,13 @@
 
                   <mat-form-field>
                     <mat-label>Select Type</mat-label>
-                    <mat-select name="type" id="stype" [(ngModel)]="details.type" (selectionChange)="showTicket()" required >
+                    <mat-select id="stype" (selectionChange)="showTicket($event)" [(ngModel)]="details.type"  name="type" required>
                         <mat-option value="Random">Random Creation</mat-option>
                         <mat-option value="Manual">Manual Creation</mat-option>
                     </mat-select>
                   </mat-form-field>
 
-                <button type="submit" class="btn-style" ><i class="fa fa-check"></i>Submit</button>
+                <button type="submit" class="btn-style"  ><i class="fa fa-check"></i>Submit</button>
                 
             </form>
         </div>
@@ -65,15 +68,18 @@
         <button class="close-bar" (click)="closePopup();"></button>
          <div class="cm-sheet-content">
             <h4><i class="fas fa-ticket-alt"></i>Ticket Count : {{details.ticket_count}} </h4>
-            
-            <ul>
-                <li *ngFor="let tick of Ticket">
-                    <div>
-                        <h4>{{tick}}</h4>
-                    </div>
-                </li>
-            </ul>
 
+            <div class="pin-row" *ngFor="let tick of Ticket">
+                <label class="pin-share-check">
+                    <input type="checkbox" name="ticket" (change)="storeTicket(tick,$event)"  id="sharecheck" >
+                    <div class="pin-selected">
+                        <div class="pin-details">
+                            <h5 class="copy-pin"><span class="copy-text">{{tick}}</span></h5>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            
          </div>
     </div>
 </div>

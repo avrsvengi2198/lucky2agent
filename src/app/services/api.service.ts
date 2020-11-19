@@ -116,4 +116,23 @@ export class ApiService {
 	 * Users End
 	 */
 
+
+	// Add Ticket
+	addTicket(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/addTicket.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+
+	// Winner List
+	winnerList(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/winner_details.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+
+	//getTickets
+	getTickets(details):Observable<any>{
+		return this.httpClient.post<any>(this.server1+'/usedTickets.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
+
 }
