@@ -11,6 +11,8 @@ import { ChangePasswordComponent } from './component/change-password/change-pass
 import { AuthGuard } from './auth.guard';
 import { AgentcreateComponent } from './component/agent/agentcreate/agentcreate.component';
 import { UsercreateComponent } from './component/users/usercreate/usercreate.component';
+import { UserlistComponent } from './component/users/userlist/userlist.component';
+import { AgentlistComponent } from './component/agent/agentlist/agentlist.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'ticket', component: TicketComponent,canActivate: [AuthGuard] },
   { path: 'changePassword', component: ChangePasswordComponent ,canActivate: [AuthGuard] },
   { path: 'agentAdd/:type/:id', component: AgentcreateComponent ,canActivate: [AuthGuard] },
-  { path: 'usersAdd/:type/:id', component: UsercreateComponent ,canActivate: [AuthGuard] }
+  { path: 'usersAdd/:type/:id', component: UsercreateComponent ,canActivate: [AuthGuard] },
+  { path: 'usersList', component: UserlistComponent ,canActivate: [AuthGuard] },
+  { path: 'agentList', component: AgentlistComponent ,canActivate: [AuthGuard] },
 
 ];
 

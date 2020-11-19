@@ -70,7 +70,7 @@ export class UsercreateComponent implements OnInit {
               this._snackBar.open(res.Message,'', {
                 duration: 3000,
               });
-              this.router.navigateByUrl('home');
+              this.router.navigateByUrl('usersList');
             },err => console.log(err));
 
       }else{
@@ -86,7 +86,7 @@ export class UsercreateComponent implements OnInit {
             this._snackBar.open(res.Message,'', {
               duration: 3000,
             });
-            this.router.navigateByUrl('home');
+            this.router.navigateByUrl('usersList');
           },err=> console.log(err));
       }else{
         this._snackBar.open('Enter Mobile No & Name !','', {

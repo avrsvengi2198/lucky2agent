@@ -1,1 +1,36 @@
-<p>agentlist works!</p>
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="nav-left-icon">
+            <a routerLink="/home"><i class="fas fa-arrow-left"></i></a>
+        </div>
+
+        <div class="page-title">
+            <h5>Agent List</h5>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="nav-right-icon">
+            <i class="fas fa-clipboard-list"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-class">
+    <div class="winner-page">
+
+        <div class="winner-card  price-1st" *ngFor="let alist of agentList" (click)="gotoUpdate(alist.aid)">
+            <div class="win-icon">
+                <img src="../../../assets/icon/winner.svg" alt="winner">
+            </div>
+
+            <div class="win-details">
+                <h4>{{alist.name}}</h4>
+                <p>{{alist.username}}</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>

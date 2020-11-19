@@ -1,1 +1,36 @@
-<p>userlist works!</p>
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="nav-left-icon">
+            <a routerLink="/home"><i class="fas fa-arrow-left"></i></a>
+        </div>
+
+        <div class="page-title">
+            <h5>User's List</h5>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="nav-right-icon">
+            <i class="fas fa-clipboard-list"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-class">
+    <div class="winner-page">
+
+        <div class="winner-card" *ngFor="let ulist of usersList" (click)="gotoUpdate(ulist.id)">
+            <div class="win-icon">
+                <img src="../../../assets/icon/winner.svg" alt="winner">
+            </div>
+
+            <div class="win-details">
+                <h4>{{ulist.name}}</h4>
+                <p>{{ulist.mobile_no}}</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>

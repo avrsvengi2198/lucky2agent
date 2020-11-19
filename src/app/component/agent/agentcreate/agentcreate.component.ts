@@ -74,7 +74,7 @@ export class AgentcreateComponent implements OnInit {
               this._snackBar.open(res.Message,'', {
                 duration: 3000,
               });
-              this.router.navigateByUrl('home');
+              this.router.navigateByUrl('agentList');
             },err => console.log(err));
 
       }else{
@@ -90,7 +90,7 @@ export class AgentcreateComponent implements OnInit {
             this._snackBar.open(res.Message,'', {
               duration: 3000,
             });
-            this.router.navigateByUrl('home');
+            this.router.navigateByUrl('agentList');
           },err=> console.log(err));
       }else{
         this._snackBar.open('Enter Mobile No & Name !','', {
