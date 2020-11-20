@@ -999,3 +999,43 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
 .report-request-btn i{
     color: #ffffff;
 }
+
+
+.w100-vh100 {
+    width: 100%;
+    height: 100%;
+    position: fixed; 
+    overflow-y: scroll;
+    left: 0;
+    top: 0;
+}
+
+.align-center {
+	align-items: center !important;
+}
+
+.d-flex {
+	display: flex !important;
+}
+
+/* success page changes */
+.success-page {
+    width: 85%;
+    margin: auto;
+    text-align: center;
+}
+.success-page h3 {
+    font-size: 22px;
+    line-height: 34px;
+    margin-bottom: 25px;
+}
+.success-page img {
+    width: 90px;
+    margin-bottom: 25px;
+}
+.success-txt{
+    color: #77b43f !important;
+}
+.success-amount {
+    margin-top: 20px;
+}

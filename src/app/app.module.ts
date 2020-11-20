@@ -26,6 +26,7 @@ import { AgentlistComponent } from './component/agent/agentlist/agentlist.compon
 import { AgentcreateComponent } from './component/agent/agentcreate/agentcreate.component';
 import { UserlistComponent } from './component/users/userlist/userlist.component';
 import { UsercreateComponent } from './component/users/usercreate/usercreate.component';
+import { BuypageComponent } from './component/buypage/buypage.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { UsercreateComponent } from './component/users/usercreate/usercreate.com
     AgentlistComponent,
     AgentcreateComponent,
     UserlistComponent,
-    UsercreateComponent
+    UsercreateComponent,
+    BuypageComponent
   ],
   imports: [
     BrowserModule,

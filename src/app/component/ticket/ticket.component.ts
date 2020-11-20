@@ -64,10 +64,14 @@ export class TicketComponent implements OnInit {
                     }
                     this.apiService.addTicket(addTicks).subscribe(
                       res => {
-                        this._snackBar.open(res.Message,'', {
-                          duration: 3000,
-                        });
-                        this.router.navigateByUrl('home');
+                        if(res.Status =="Failure"){
+                          this._snackBar.open(res.Message,'', {
+                            duration: 3000,
+                          });
+                          this.router.navigateByUrl('home');
+                        }else{
+                          this.router.navigateByUrl('buySuccess');
+                        }
                       },err => console.log(err));
                 }else{
                   this._snackBar.open('Select Lottery Type !!','', {

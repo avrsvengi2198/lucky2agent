@@ -13,6 +13,7 @@ import { AgentcreateComponent } from './component/agent/agentcreate/agentcreate.
 import { UsercreateComponent } from './component/users/usercreate/usercreate.component';
 import { UserlistComponent } from './component/users/userlist/userlist.component';
 import { AgentlistComponent } from './component/agent/agentlist/agentlist.component';
+import { BuypageComponent } from './component/buypage/buypage.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'usersAdd/:type/:id', component: UsercreateComponent ,canActivate: [AuthGuard] },
   { path: 'usersList', component: UserlistComponent ,canActivate: [AuthGuard] },
   { path: 'agentList', component: AgentlistComponent ,canActivate: [AuthGuard] },
+   { path: 'buySuccess', component: BuypageComponent,canActivate: [AuthGuard] },
 
 ];
 
