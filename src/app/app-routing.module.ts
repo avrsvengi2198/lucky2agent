@@ -14,6 +14,7 @@ import { UsercreateComponent } from './component/users/usercreate/usercreate.com
 import { UserlistComponent } from './component/users/userlist/userlist.component';
 import { AgentlistComponent } from './component/agent/agentlist/agentlist.component';
 import { BuypageComponent } from './component/buypage/buypage.component';
+import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'usersAdd/:type/:id', component: UsercreateComponent ,canActivate: [AuthGuard] },
   { path: 'usersList', component: UserlistComponent ,canActivate: [AuthGuard] },
   { path: 'agentList', component: AgentlistComponent ,canActivate: [AuthGuard] },
-   { path: 'buySuccess/:amount', component: BuypageComponent,canActivate: [AuthGuard] },
+  { path: 'buySuccess/:amount', component: BuypageComponent,canActivate: [AuthGuard] },
+  { path: 'spinner', component: LuckydrawComponent,canActivate: [AuthGuard] },
 
 ];
 

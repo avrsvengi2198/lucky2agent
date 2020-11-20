@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule ,NO_ERRORS_SCHEMA} from '@angular/core';
 
 
 import { ApiService } from './services/api.service';
@@ -27,7 +27,7 @@ import { AgentcreateComponent } from './component/agent/agentcreate/agentcreate.
 import { UserlistComponent } from './component/users/userlist/userlist.component';
 import { UsercreateComponent } from './component/users/usercreate/usercreate.component';
 import { BuypageComponent } from './component/buypage/buypage.component';
-
+import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { BuypageComponent } from './component/buypage/buypage.component';
     AgentcreateComponent,
     UserlistComponent,
     UsercreateComponent,
-    BuypageComponent
+    BuypageComponent,
+    LuckydrawComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,10 @@ import { BuypageComponent } from './component/buypage/buypage.component';
     MatSelectModule,
     MatDatepickerModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
   ],
   providers: [ApiService,AuthGuard],
   bootstrap: [AppComponent]
