@@ -7,7 +7,7 @@ import { AuthGuard } from './auth.guard';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -63,7 +63,7 @@ import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
   schemas: [
     NO_ERRORS_SCHEMA
   ],
-  providers: [ApiService,AuthGuard],
+  providers: [ApiService,AuthGuard,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
