@@ -26,15 +26,20 @@
             </div>
 
             <div class="win-details">
+                <h4>{{winner.lottery_name}}</h4>
                 <h4>{{winner.user}}</h4>
                 <p>{{winner.ticket}}</p>
+                <p>{{winner.lottery_date}}</p>
             </div>
 
             <div class="win-amount">
                 &#x20B9; {{winner.amount}}
             </div>
 
-            <div class="win-price">{{winner.prize}}<span>st</span></div>
+            <div *ngIf="winner.prize == 1" class="win-price">{{winner.prize}}<span>st</span></div>
+            <div *ngIf="winner.prize == 2" class="win-price">{{winner.prize}}<span>nd</span></div>
+            <div *ngIf="winner.prize == 3" class="win-price">{{winner.prize}}<span>rd</span></div>
+            <div *ngIf="winner.prize > 3" class="win-price">{{winner.prize}}<span>th</span></div>
         </div>
 
     </div>
