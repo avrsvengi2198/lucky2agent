@@ -34,6 +34,12 @@ button:focus, button:hover{
     outline: none;
     box-shadow: none;
 }
+.txt-red{
+    color:#ff0000 !important;
+}
+.txt-green{
+    color: #008000 !important;
+}
 .text-center{
     text-align: center;
 }

@@ -24,13 +24,21 @@
         <div class="profile-form">
             <form (submit)="createTicket()">
                 <mat-form-field>
+                    <mat-label>Select Lottery Type</mat-label>
+                    <mat-select  (selectionChange)="getLottery()" name="ltype" [(ngModel)]="details.ltype" id="ltype"  required >
+                      <div *ngFor="let ltype of lotteryType">
+                        <mat-option value="{{ltype}}" >{{ltype}}</mat-option>
+                      </div>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
                     <mat-label>Select Lottery</mat-label>
                     <mat-select  (selectionChange)="getParticlot()" name="lottery_id" [(ngModel)]="details.lottery_id" id="lid"  required >
                       <div *ngFor="let lott of Lottery">
                         <mat-option value="{{lott.id}}" >{{lott.lottery_name}}</mat-option>
                       </div>
                     </mat-select>
-                  </mat-form-field>
+                </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>User Mobile</mat-label>
@@ -55,6 +63,11 @@
                     </mat-select>
                   </mat-form-field>
 
+                  <mat-form-field>
+                    <mat-label>Total Amount</mat-label>
+                    <input matInput name="price" [(ngModel)]="details.price" type="text"  readonly >
+                  </mat-form-field>
+
                 <button type="submit" class="btn-style"  ><i class="fa fa-check"></i>Submit</button>
                 
             </form>
@@ -68,7 +81,7 @@
         <button class="close-bar" (click)="closePopup();"></button>
          <div class="cm-sheet-content">
             <h4><i class="fas fa-ticket-alt"></i>Ticket Count : {{details.ticket_count}} </h4>
-
+            <h4 class="txt-red">Select your ticket</h4>
             <div class="pin-row" *ngFor="let tick of Ticket">
                 <label class="pin-share-check">
                     <input type="checkbox" name="ticket" (change)="storeTicket(tick,$event)"  id="sharecheck" >
