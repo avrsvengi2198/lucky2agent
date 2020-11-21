@@ -139,5 +139,10 @@ export class ApiService {
 		return this.httpClient.post<any>(this.server+'/lotteryList.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
 	}
 
+	//getLottery
+	getDashlottery():Observable<any>{
+		return this.httpClient.get<any>(this.server1+'/dashLottery.php', this.httpOptions).pipe(retry(0),catchError(this.errorHandl));
+	}
+
 
 }

@@ -44,7 +44,7 @@
                 <input matInput type="text" [(ngModel)]="agent.ref_code" name="ref_code" readonly >
               </mat-form-field>
     
-              <mat-form-field>
+              <!-- <mat-form-field>
                 <mat-label> A/C No </mat-label>
                 <input matInput type="text" [(ngModel)]="agent.bank_acc" name="bank_acc" >
               </mat-form-field>
@@ -67,7 +67,7 @@
               <mat-form-field>
                 <mat-label> Account Holder Name </mat-label>
                 <input matInput type="text" [(ngModel)]="agent.acc_name" name="acc_name">
-              </mat-form-field>
+              </mat-form-field> -->
 
              <div class="text-center">
               <button  type="submit" (click)="newAgent(ptype)" class="btn-style" ><i class="fa fa-check"></i> {{ptype == 'Add' ? 'Submit' : 'Update'}}</button>

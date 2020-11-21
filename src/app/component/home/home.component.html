@@ -13,7 +13,7 @@
             </div>
     
             <div class="page-title app-title">
-                Lucky Agent
+                ADHIW Agent
             </div>
         </div>
     
@@ -23,6 +23,9 @@
     </div>
     
     <div class="page-class">
+        <div class="load-spinner" *ngIf="spinner">
+            <mat-spinner strokeWidth="3" diameter="35" class="spinner-circle" ></mat-spinner>
+        </div>
         <div class="user-detail-sec">
             <div class="user-avatar">
                {{getShortName(userDetails.name)}}
@@ -37,7 +40,7 @@
 
         <div class="grid-menu">
             <div class="grid-col">
-                <a routerLink="/lotteryWinner">
+                <a routerLink="/usersList">
                     <div class="icon-grid-box">
                         <img src="assets/icon/new-user.svg" alt="new user">
                         <h5>Add User</h5>
@@ -47,7 +50,7 @@
 
 
             <div class="grid-col">
-                <a routerLink="/lotteryWinner">
+                <a routerLink="/agentList">
                     <div class="icon-grid-box">
                         <img src="assets/icon/man-in-suit-and-tie.svg" alt="Agent">
                         <h5>Agent</h5>
@@ -67,6 +70,7 @@
         </div>
 
         <div class="scroll-sec winner-slider">
+
             <div class="sub-header">
                 <div class="sec-title">
                     <h4>Winners</h4>
@@ -80,61 +84,14 @@
 
             <div class="scroll-container">
                 <div class="scroll-stage">
-                    <div class="scroll-item">
+
+                    <div class="scroll-item" *ngFor="let lwin of lastWinner">
                         <a routerLink="#">
                             <div class="scroll-content">
                                 <img src="assets/icon/winner.svg" alt="winner">
         
                                 <div class="scroll-dec">
-                                    <h5>Selvaraj Marimuthu</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-    
-                    <div class="scroll-item">
-                        <a routerLink="#">
-                            <div class="scroll-content">
-                                <img src="assets/icon/winner.svg" alt="winner">
-        
-                                <div class="scroll-dec">
-                                    <h5>Madhavan</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-    
-                    <div class="scroll-item">
-                        <a routerLink="#">
-                            <div class="scroll-content">
-                                <img src="assets/icon/winner.svg" alt="winner">
-        
-                                <div class="scroll-dec">
-                                    <h5>Saravana</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-    
-                    <div class="scroll-item">
-                        <a routerLink="#">
-                            <div class="scroll-content">
-                                <img src="assets/icon/winner.svg" alt="winner">
-        
-                                <div class="scroll-dec">
-                                    <h5>Vengadesh</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-    
-                    <div class="scroll-item">
-                        <a routerLink="#">
-                            <div class="scroll-content">
-                                <img src="assets/icon/winner.svg" alt="winner">
-        
-                                <div class="scroll-dec">
-                                    <h5>Vicky</h5>
+                                    <h5>{{lwin.user}}</h5>
                                 </div>
                             </div>
                         </a>
@@ -147,10 +104,10 @@
 
         <div class="event-section">
             <div class="event-card">
-                <h4 class="lottery-date">22.11.2020</h4>
-                <h3>New Elan Lottery</h3>
+                <h4 class="lottery-date">{{nextLot.lottery_date}}</h4>
+                <h3>{{nextLot.lottery_name}}</h3>
                 <div class="ticket-timer">
-                    16 : 11 : 54 : 37
+                    {{nextLot.lottery_time}}
 
                     <div class="time-icon">
                         <i class="far fa-clock"></i>

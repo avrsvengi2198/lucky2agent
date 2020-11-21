@@ -44,7 +44,7 @@
                 <input matInput type="text" [(ngModel)]="users.ref_code" name="refcode" readonly >
               </mat-form-field>
     
-              <mat-form-field>
+              <!-- <mat-form-field>
                 <mat-label> A/C No </mat-label>
                 <input matInput type="text" [(ngModel)]="users.bank_acc" name="bank_acc" >
               </mat-form-field>
@@ -67,9 +67,11 @@
               <mat-form-field>
                 <mat-label> Account Holder Name </mat-label>
                 <input matInput type="text" [(ngModel)]="users.acc_name" name="acc_name">
-              </mat-form-field>
+              </mat-form-field> -->
 
-              <button  type="submit" (click)="newUsers(ptype)" class="btn-style" ><i class="fa fa-check"></i> {{ptype == 'Add' ? 'Submit' : 'Update'}}</button>
+              <div class="text-center">
+                <button  type="submit" (click)="newUsers(ptype)" class="btn-style" ><i class="fa fa-check"></i> {{ptype == 'Add' ? 'Submit' : 'Update'}}</button>
+              </div>
 
         </div>
     </div>

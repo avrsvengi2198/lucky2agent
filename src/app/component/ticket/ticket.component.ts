@@ -14,7 +14,7 @@ export class TicketComponent implements OnInit {
   status:boolean = false; Lottery:any = []; sTicket:any = [];
   pLottory : any = []; Ticket : any = []; spinner:boolean = false;
   availabelTick : number = 0;  lotteryType : any = ['Silver','Gold','Platinum'];
-  ticketPrice:number = 0;
+  ticketPrice:number = 0; manuSel : boolean = false;
   getname = {
     mobile_no:''
   }
@@ -167,7 +167,9 @@ export class TicketComponent implements OnInit {
                 }else{
                   if(this.details.type =="Manual"){
                       this.openPopup();
+                      this.manuSel = true;
                   }else{
+                    this.manuSel = false;
                     for(let a = 0; a < Number(this.details.ticket_count);a++){
                       let randTick = this.Ticket[Math.floor(Math.random() * this.Ticket.length)];                      
                       this.sTicket.push(randTick);

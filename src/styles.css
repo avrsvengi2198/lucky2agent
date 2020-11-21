@@ -1138,7 +1138,6 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
     display: flex;
 }
 .mat-btn-group .mat-form-field {
-    width: 80%;
 }
 .mat-group-sec{
     width: 20%;
