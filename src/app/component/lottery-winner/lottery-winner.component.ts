@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LotteryWinnerComponent implements OnInit {
 
-  winnerList :any = []; date:any;
+  winnerList :any = []; date:any; spinner:boolean = true;
 
   winner = {
     lottery_date:''
@@ -26,6 +26,7 @@ export class LotteryWinnerComponent implements OnInit {
   getWinnerList(){
     this.apiService.winnerList(this.winner).subscribe(
       res => {
+        this.spinner = false;
         if(res.Status == 'Success'){
             this.winnerList = res.Response;
         }else{

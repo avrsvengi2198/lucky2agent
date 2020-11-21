@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AgentcreateComponent implements OnInit {
   ptype:any; pid:any; userDetails:any; agentList:any = [];
-
+  spinner:boolean = true;
   alist = {
     agent:''
   }
@@ -42,6 +42,7 @@ export class AgentcreateComponent implements OnInit {
 
     this.apiService.agentList(this.alist).subscribe(
       res => {
+        this.spinner = false;
         this.agentList = res.Response;
         this.getDetails();
       },err => console.log(err));
@@ -69,8 +70,10 @@ export class AgentcreateComponent implements OnInit {
   newAgent(args){
     if(args == 'Add'){
       if((this.agent.mobile !='') && (this.agent.name)){
+         this.spinner = true;
           this.apiService.agentAdd(this.agent).subscribe(
             res => {
+              this.spinner = false;
               this._snackBar.open(res.Message,'', {
                 duration: 3000,
               });
@@ -85,8 +88,10 @@ export class AgentcreateComponent implements OnInit {
     }else{
       if((this.agent.mobile !='') && (this.agent.name)){
         this.agent.aid = this.pid;
+        this.spinner = true;
          this.apiService.agentUpdate(this.agent).subscribe(
           res => {
+            this.spinner = false;
             this._snackBar.open(res.Message,'', {
               duration: 3000,
             });

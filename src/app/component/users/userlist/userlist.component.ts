@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
-  userDetails:any; usersList:any = [];
+  userDetails:any; usersList:any = []; spinner:boolean = true;
   alist = {
     agent:''
   }
@@ -23,6 +23,7 @@ export class UserlistComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.usersList(this.alist).subscribe(
       res => {
+        this.spinner = false;
         this.usersList = res.Response;
       },err => console.log(err));
   }

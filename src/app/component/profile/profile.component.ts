@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userDetails:any;
+  userDetails:any; spinner:boolean = true;
 
   userUp:any  = {
     id:'',
@@ -41,12 +41,15 @@ export class ProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.spinner = false;
   }
 
   updateUser(){
     if((this.userUp.name !='') ){
+      this.spinner = true;
       this.apiService.updateUser(this.userUp).subscribe(
         res => {
+          this.spinner = false;
           this._snackBar.open(res.Message,'', {
             duration: 3000,
           });

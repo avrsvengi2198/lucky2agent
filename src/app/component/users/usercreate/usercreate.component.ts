@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UsercreateComponent implements OnInit {
   ptype:any; pid:any; userDetails:any; usersList:any = [];
-
+  spinner:boolean = true;
   alist = {
     agent:''
   }
@@ -40,6 +40,7 @@ export class UsercreateComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.usersList(this.alist).subscribe(
       res => {
+        this.spinner = false;
         this.usersList = res.Response;
         this.getDetails();
       },err => console.log(err));
@@ -65,8 +66,10 @@ export class UsercreateComponent implements OnInit {
   newUsers(args){
     if(args == 'Add'){
       if((this.users.mobile_no !='') && (this.users.name)){
+        this.spinner = true;
           this.apiService.usersAdd(this.users).subscribe(
             res => {
+              this.spinner = false;
               this._snackBar.open(res.Message,'', {
                 duration: 3000,
               });
@@ -80,9 +83,11 @@ export class UsercreateComponent implements OnInit {
       }
     }else{
       if((this.users.mobile_no !='') && (this.users.name)){
+        this.spinner = true;
         this.users.id = this.pid;
          this.apiService.usersUpdate(this.users).subscribe(
           res => {
+            this.spinner = false;
             this._snackBar.open(res.Message,'', {
               duration: 3000,
             });

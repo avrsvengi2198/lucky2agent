@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class TicketComponent implements OnInit {
   status:boolean = false; Lottery:any = []; sTicket:any = [];
-  pLottory : any = []; Ticket : any = []; spinner:boolean = true;
+  pLottory : any = []; Ticket : any = []; spinner:boolean = false;
   availabelTick : number = 0;  lotteryType : any = ['Silver','Gold','Platinum'];
   ticketPrice:number = 0;
   getname = {
@@ -42,7 +42,7 @@ export class TicketComponent implements OnInit {
   ngOnInit(): void {
     this.openPopup();
     this.closePopup();
-    this.spinner = false;
+   
 
     // this.apiService.lotteryList().subscribe(
     //   res =>{
@@ -56,13 +56,14 @@ export class TicketComponent implements OnInit {
   //getLottery
 
   getLottery(){
-    
+    this.spinner = true;
     if(this.details.ltype !=''){
       let ltype = {
         ltype:this.details.ltype
       }
       this.apiService.getLottery(ltype).subscribe(
         res =>{
+          this.spinner = false;
           if(res.Status =="Success"){
             this.Lottery = res.Response;
           }else{
@@ -84,6 +85,7 @@ export class TicketComponent implements OnInit {
         if(this.details.lottery_id !=''){
             if(this.details.ticket_count !=''){
                 if(this.sTicket.length !=0){
+                  this.spinner = true;
                     let addTicks = {
                       ticket_count:this.details.ticket_count,
                       user:this.details.user,
@@ -94,6 +96,7 @@ export class TicketComponent implements OnInit {
                     }
                     this.apiService.addTicket(addTicks).subscribe(
                       res => {
+                        this.spinner = false;
                         if(res.Status =="Failure"){
                           this._snackBar.open(res.Message,'', {
                             duration: 3000,
@@ -130,9 +133,11 @@ export class TicketComponent implements OnInit {
 
   getName(){
     if(this.details.user !=''){
+      this.spinner = true;
       this.getname.mobile_no = this.details.user;
       this.apiService.getUsername(this.getname).subscribe(
         res => {
+          this.spinner = false;
             if(res.Status == 'Success'){
                 this.details.uname = res.Message;
             }else{

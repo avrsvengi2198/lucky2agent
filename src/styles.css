@@ -1048,3 +1048,7 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
 .success-amount {
     margin-top: 20px;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: var(--main-color);
+}

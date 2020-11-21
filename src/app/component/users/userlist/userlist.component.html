@@ -18,6 +18,9 @@
 
 
 <div class="page-class">
+    <div class="load-spinner" *ngIf="spinner">
+        <mat-spinner strokeWidth="3" diameter="35" class="spinner-circle" ></mat-spinner>
+    </div>
     <div class="winner-page">
 
         <div class="winner-card" *ngFor="let ulist of usersList" (click)="gotoUpdate(ulist.id)">
