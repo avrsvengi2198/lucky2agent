@@ -23,7 +23,12 @@
     </div>
     <div class="winner-page">
 
-        <div class="winner-card price-1st" *ngFor="let winner of winnerList">
+        <mat-form-field class="textbox-w-icon">
+            <mat-label>Date</mat-label>
+            <input matInput type="text" >
+          </mat-form-field>
+
+        <div class="winner-card winner-card-details price-1st" *ngFor="let winner of winnerList">
             <div class="win-icon">
                 <img src="assets/icon/winner.svg" alt="winner">
             </div>

@@ -15,6 +15,8 @@ import { UserlistComponent } from './component/users/userlist/userlist.component
 import { AgentlistComponent } from './component/agent/agentlist/agentlist.component';
 import { BuypageComponent } from './component/buypage/buypage.component';
 import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
+import { WalletComponent } from './component/wallet/wallet.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'agentList', component: AgentlistComponent ,canActivate: [AuthGuard] },
   { path: 'buySuccess/:amount', component: BuypageComponent,canActivate: [AuthGuard] },
   { path: 'spinner', component: LuckydrawComponent,canActivate: [AuthGuard] },
+  { path: 'wallet', component: WalletComponent,canActivate: [AuthGuard] },
+
 
 ];
 
@@ -41,4 +45,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [ LoginComponent,HomeComponent, ProfileComponent,ProfilevComponent, LotteryWinnerComponent, TicketComponent, ChangePasswordComponent]
+export const routingComponents = [ LoginComponent,HomeComponent, ProfileComponent,ProfilevComponent, LotteryWinnerComponent, TicketComponent, ChangePasswordComponent, WalletComponent]

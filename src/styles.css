@@ -489,7 +489,7 @@ button:focus, button:hover{
     object-fit: contain;
     object-position: center;
     display: inline-block;
-    filter: brightness(10);
+    filter: invert(1);
 }
 .icon-grid-box h5 {
     font-weight: 700;
@@ -497,18 +497,16 @@ button:focus, button:hover{
     color: #ffffff;
 }
 .grid-col {
-    width: 50%;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 33.33%;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .icon-grid-box {
     background: var(--main-grad);
     text-align: center;
     box-shadow: 1px 3px 15px rgba(0,0,0,0.2);
     border-radius: 8px;
-    padding:15px 10px;
-    display: flex;
-    align-items: center;
+    padding: 15px 10px;
 }
 
 .sub-header {
@@ -874,6 +872,20 @@ button:focus, button:hover{
 .close-bar:after{
     top:5px;
 }
+
+.full-h-sheet .popup {
+    min-height: 100%;
+    border-radius: 0px;
+}
+.cm-bottom-sheet button.close-bar.close-icon:before, .cm-bottom-sheet button.close-bar.close-icon:after {
+    content: unset;
+}
+.cm-bottom-sheet button.close-bar.close-icon {
+    text-align: right;
+    width: 100%;
+}
+
+
 .ticket-dts-sheet h4{
     font-weight:500;
     margin-bottom:15px;
@@ -995,7 +1007,7 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
     position: fixed;
     bottom: 30px;
     right: 20px;
-    background: linear-gradient(135deg, rgba(27,69,146,1) 0%,rgba(0,189,196,1) 100%);
+    background: var(--main-grad);
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -1004,11 +1016,8 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
     justify-content: center;
     font-size: 18px;
     box-shadow: 0px 10px 15px rgba(59,113,155,0.5) !important;
-}
-.report-request-btn i{
     color: #ffffff;
 }
-
 
 .w100-vh100 {
     width: 100%;
@@ -1053,6 +1062,175 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
     stroke: var(--main-color);
 }
 
-/* V */
+.event-card {
+    width: calc(100% - 40px);
+    margin: auto;
+    background: var(--main-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0px 30px;
+    border-radius: 5px;
+    box-shadow: 1px 5px 15px rgba(0,0,0,0.2);
+}
+.event-card h4,.event-card h3{
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+.ticket-timer {
+    background: #ffffff;
+    color: var(--main-color);
+    font-weight: 700;
+    font-size: 2rem;
+    padding: 20px 35px 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    box-shadow: 0px 15px 30px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    margin-top: 15px;
+    position: relative;
+}
+.event-section {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.event-card h4, .event-card h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-shadow: 0px 3px 5px rgba(0,0,0,.2);
+}
+.event-card h4 {
+    font-size: 1.4rem;
+}
+.time-icon {
+    background: var(--main-grad);
+    color: #ffffff;
+    font-size: 1.2rem;
+    display: inline-block;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 3px 20px rgba(0,0,0,0.2);
+}
+.winner-card-details {
+    border-radius: 10px;
+}
 
-/** AK **/
+.agent-ur-card .win-amount button {
+    color: #ffffff;
+    background: unset;
+    border: none;
+    font-size: 1.3rem;
+    text-shadow: 0px 3px 5px rgba(0,0,0,0.5);
+}
+.agent-ur-card .win-icon img {
+    filter: invert(1);
+    background: rgba(0,0,0,0.3);
+    box-shadow: none;
+}
+.mat-btn-group {
+    display: flex;
+}
+.mat-btn-group .mat-form-field {
+    width: 80%;
+}
+.mat-group-sec{
+    width: 20%;
+    padding-left: 15px;
+}
+.select-ticket {
+    background: var(--main-color);
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 10px 5px;
+    text-align: center;
+    border-radius: 6px;
+}
+
+/* Wallet page css */
+.navbar.wallet-nav{
+    position: unset;
+    box-shadow: none;
+    background: unset;
+}
+.navbar.wallet-nav, .navbar.wallet-nav a, .navbar.wallet-nav .nav-left-icon button, .wallet-nav .page-title h5,.wallet-nav .nav-right-icon{
+    color: #ffffff;
+}
+.wallet-page {
+    background: var(--main-color);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+.wallet-amount {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.wallet-amount h2, .wallet-amount p {
+    color: #ffffff;
+}
+.wallet-amount h2 {
+    font-size: 46px;
+    text-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    font-weight: 700;
+}
+.wallet-amount p {
+    font-size: 16px;
+    margin-top: 5px;
+    color: rgba(255,255,255,0.8);
+}
+
+.wallet-list-sec {
+    background: #ffffff;
+    height: calc(100% - 231px);
+    overflow-y: scroll;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.wallet-list {
+    display: flex;
+    align-items: center;
+}
+.w-details {
+    width: 75%;
+}
+.w-crd-amount{
+    width: 25%;
+    text-align: right;
+}
+.wallet-list {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+.wallet-list h5 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+.wallet-list p{
+    color: #777777;
+}
+.w-crd-amount {
+    width: 25%;
+    text-align: right;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: var(--site-font);
+    color: var(--main-color);
+}

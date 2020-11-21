@@ -39,7 +39,7 @@ import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
     UserlistComponent,
     UsercreateComponent,
     BuypageComponent,
-    LuckydrawComponent
+    LuckydrawComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +58,7 @@ import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
     MatSelectModule,
     MatDatepickerModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule
   ],
   schemas: [
     NO_ERRORS_SCHEMA

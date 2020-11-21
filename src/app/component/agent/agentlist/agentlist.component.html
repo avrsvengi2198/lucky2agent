@@ -23,14 +23,18 @@
     </div>
     <div class="winner-page">
 
-        <div class="winner-card  price-1st" *ngFor="let alist of agentList" (click)="gotoUpdate(alist.aid)">
+        <div class="winner-card agent-ur-card" *ngFor="let alist of agentList">
             <div class="win-icon">
-                <img src="assets/icon/winner.svg" alt="winner">
+                <img src="assets/icon/man-in-suit-and-tie.svg" alt="winner">
             </div>
 
             <div class="win-details">
                 <h4>{{alist.name}}</h4>
                 <p>{{alist.username}}</p>
+            </div>
+
+            <div class="win-amount">
+                <button routerLink="#" (click)="gotoUpdate(alist.aid)"><i class="fas fa-edit"></i></button>
             </div>
         </div>
 
