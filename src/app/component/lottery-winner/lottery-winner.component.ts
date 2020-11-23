@@ -34,6 +34,7 @@ export class LotteryWinnerComponent implements OnInit {
         if(res.Status == 'Success'){
             this.winnerList = res.Response;
         }else{
+          this.winnerList = res.Response;
           this._snackBar.open('No Record Fount','', {
             duration: 3000,
           });
