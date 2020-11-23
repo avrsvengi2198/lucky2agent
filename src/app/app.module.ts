@@ -19,7 +19,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { MenuComponent } from './component/menu/menu.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DatePipe } from '@angular/common'
 import { from } from 'rxjs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AgentlistComponent } from './component/agent/agentlist/agentlist.component';
@@ -58,12 +60,14 @@ import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
     MatSelectModule,
     MatDatepickerModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatNativeDateModule,
+    MatRippleModule
   ],
   schemas: [
     NO_ERRORS_SCHEMA
   ],
-  providers: [ApiService,AuthGuard,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [ApiService,DatePipe,AuthGuard,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

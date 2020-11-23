@@ -23,10 +23,12 @@
     </div>
     <div class="winner-page">
 
-        <mat-form-field class="textbox-w-icon">
-            <mat-label>Date</mat-label>
-            <input matInput type="text" >
-          </mat-form-field>
+       <mat-form-field>
+        <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="dp3" [(ngModel)]="dateReq" (dateChange)="getWinnerList()" [max]="yesterday" name="sdate" readonly  >
+            <mat-datepicker-toggle  matSuffix [for]="dp3" ></mat-datepicker-toggle>
+            <mat-datepicker [startAt]="dateReq" #dp3  ></mat-datepicker>
+        </mat-form-field>
 
           <div *ngFor="let winner of winnerList">
             <div *ngIf="winner.prize == 1" class="winner-card winner-card-details price-1st" >

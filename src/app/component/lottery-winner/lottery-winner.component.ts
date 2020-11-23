@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-lottery-winner',
@@ -10,12 +11,14 @@ import { ApiService } from 'src/app/services/api.service';
 export class LotteryWinnerComponent implements OnInit {
 
   winnerList :any = []; date:any; spinner:boolean = true;
-
+  dateReq:any = new Date();
+  yesterday = new Date(this.dateReq); minDate:any;
   winner = {
     lottery_date:''
   }
 
-  constructor(private apiService:ApiService,private _snackBar: MatSnackBar) { 
+  constructor(private apiService:ApiService,private _snackBar: MatSnackBar,
+    public datepipe: DatePipe,) { 
 
   }
 
@@ -24,6 +27,7 @@ export class LotteryWinnerComponent implements OnInit {
   }
 
   getWinnerList(){
+    this.winner.lottery_date = this.datepipe.transform(this.dateReq, 'dd-MM-yyyy');
     this.apiService.winnerList(this.winner).subscribe(
       res => {
         this.spinner = false;
