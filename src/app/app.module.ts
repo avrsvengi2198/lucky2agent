@@ -32,6 +32,7 @@ import { BuypageComponent } from './component/buypage/buypage.component';
 import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
 import { TicketListComponent } from './component/ticket-list/ticket-list.component';
 import { LotteryComponent } from './component/lottery/lottery.component';
+import { AgentwinnerComponent } from './component/agentwinner/agentwinner.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LotteryComponent } from './component/lottery/lottery.component';
     LuckydrawComponent,
     TicketListComponent,
     LotteryComponent,
+    AgentwinnerComponent,
   ],
   imports: [
     BrowserModule,

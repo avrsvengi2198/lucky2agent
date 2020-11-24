@@ -86,7 +86,7 @@
                 <div class="scroll-stage">
 
                     <div class="scroll-item" *ngFor="let lwin of lastWinner">
-                        <a>
+                        <a (click)="openPopup(lwin.id);">
                             <div class="scroll-content">
                                 <div class="scroll-dec">
                                     <h5>{{lwin.lottery_name}}</h5>
@@ -131,5 +131,32 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+
+<div class="cm-bottom-sheet ticket-dts-sheet" [ngClass]="status ? 'open-checker' : 'close-checker'">
+    <div class="close-space" (click)="closePopup();"></div>                
+    <div class="popup">
+        <button class="close-bar close-icon" (click)="closePopup();"><i class="fas fa-times"></i></button>
+         <div class="cm-sheet-content">
+            
+            <div class="event-section">
+                <div class="event-card">
+                    <h4 class="lottery-date">{{winnerShow.lottery_date}} {{winnerShow.lottery_time}}</h4>
+                    <h3>{{winnerShow.lottery_name}}</h3>
+                    <h3>{{winnerShow.user}}</h3> 
+                   <h3>&#x20B9; {{winnerShow.amount}}</h3> 
+                    <div class="ticket-timer">
+                        {{winnerShow.ticket}}
+                       
+                        <div class="time-icon">
+                            {{winnerShow.prize}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+         </div>
     </div>
 </div>

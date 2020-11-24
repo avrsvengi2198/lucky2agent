@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   menu: boolean = false; userDetails:any; spinner:boolean = true;
   nextLot:any = []; lastWinner :any = [];  date :any= '';
+  status:boolean = false;  winnerShow :any = [];
 
   menuFunc(){
     this.menu = !this.menu;       
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuFunc()
+    this.closePopup();
 
     this.apiService.getDashlottery().subscribe(
       res =>{
@@ -49,6 +51,20 @@ export class HomeComponent implements OnInit {
 
   getShortName(fullName) { 
     return fullName.split(' ').map(n => n[0]).join('');
+  }
+
+  openPopup(id){
+    this.spinner = true;
+    if(id !=''){
+      this.spinner = false;
+      this.status = true;
+      let pariTicks =  this.lastWinner.find(element => element.id == id);
+      this.winnerShow = pariTicks;
+    }
+  }
+
+  closePopup(){
+    this.status = false;
   }
 
 }
