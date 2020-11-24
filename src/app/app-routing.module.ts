@@ -16,6 +16,7 @@ import { AgentlistComponent } from './component/agent/agentlist/agentlist.compon
 import { BuypageComponent } from './component/buypage/buypage.component';
 import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
 import { WalletComponent } from './component/wallet/wallet.component';
+import { TicketListComponent } from './component/ticket-list/ticket-list.component';
 
 
 const routes: Routes = [
@@ -26,13 +27,14 @@ const routes: Routes = [
   { path: 'profilev', component: ProfilevComponent ,canActivate: [AuthGuard]  },
   { path: 'lotteryWinner', component: LotteryWinnerComponent ,canActivate: [AuthGuard]  },
   { path: 'ticket', component: TicketComponent,canActivate: [AuthGuard] },
+  { path: 'ticketList', component: TicketListComponent,canActivate: [AuthGuard] },
   { path: 'changePassword', component: ChangePasswordComponent ,canActivate: [AuthGuard] },
   { path: 'agentAdd/:type/:id', component: AgentcreateComponent ,canActivate: [AuthGuard] },
   { path: 'usersAdd/:type/:id', component: UsercreateComponent ,canActivate: [AuthGuard] },
   { path: 'usersList', component: UserlistComponent ,canActivate: [AuthGuard] },
   { path: 'agentList', component: AgentlistComponent ,canActivate: [AuthGuard] },
   { path: 'buySuccess/:amount', component: BuypageComponent,canActivate: [AuthGuard] },
-  { path: 'spinner', component: LuckydrawComponent,canActivate: [AuthGuard] },
+  { path: 'spinner/:id', component: LuckydrawComponent,canActivate: [AuthGuard] },
   { path: 'wallet', component: WalletComponent,canActivate: [AuthGuard] },
 
 

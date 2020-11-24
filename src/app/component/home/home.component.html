@@ -59,7 +59,7 @@
             </div>
 
             <div class="grid-col">
-                <a routerLink="/ticket">
+                <a routerLink="/ticketList">
                     <div class="icon-grid-box">
                         <img src="assets/icon/ticket.svg" alt="Tickets">
                         <h5>Tickets</h5>
@@ -86,8 +86,11 @@
                 <div class="scroll-stage">
 
                     <div class="scroll-item" *ngFor="let lwin of lastWinner">
-                        <a routerLink="#">
+                        <a>
                             <div class="scroll-content">
+                                <div class="scroll-dec">
+                                    <h5>{{lwin.lottery_name}}</h5>
+                                </div>
                                 <img src="assets/icon/winner.svg" alt="winner">
         
                                 <div class="scroll-dec">
@@ -107,7 +110,19 @@
                 <h4 class="lottery-date">{{nextLot.lottery_date}}</h4>
                 <h3>{{nextLot.lottery_name}}</h3>
                 <div class="ticket-timer">
-                    {{nextLot.lottery_time}}
+
+                    <div class="countdown show" attr.data-Date='{{date}}'>
+                        <div class="running">
+                             <timer>
+                                 <span class="days"></span>:<span class="hours"></span>:<span class="minutes"></span>:<span class="seconds"></span>
+                             </timer>
+                             
+                             <div class="break"></div>
+                             <div class="labels"><span>Days</span><span>Hours</span><span>Minutes</span><span>Seconds</span>
+                             </div>
+                             
+                         </div>
+                     </div>
 
                     <div class="time-icon">
                         <i class="far fa-clock"></i>

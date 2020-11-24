@@ -122,6 +122,12 @@ export class ApiService {
 		return this.httpClient.post<any>(this.server1+'/addTicket.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
 	}
 
+	//Ticket List
+
+	newticketList(details):Observable<any>{
+		return this.httpClient.post<any>(this.server+'/buyLottery.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
+
 
 	// Winner List
 	winnerList(details):Observable<any>{ 

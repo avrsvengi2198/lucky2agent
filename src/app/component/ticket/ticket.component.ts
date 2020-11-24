@@ -14,7 +14,7 @@ export class TicketComponent implements OnInit {
   status:boolean = false; Lottery:any = []; sTicket:any = [];
   pLottory : any = []; Ticket : any = []; spinner:boolean = false;
   availabelTick : number = 0;  lotteryType : any = ['Silver','Gold','Platinum'];
-  ticketPrice:number = 0; manuSel : boolean = false;
+  ticketPrice:number = 0; manuSel : boolean = false; userDetails:any;
   getname = {
     mobile_no:''
   }
@@ -37,7 +37,9 @@ export class TicketComponent implements OnInit {
     this.status = false;
   }
 
-  constructor(private apiService:ApiService,private _snackBar: MatSnackBar,private router: Router) { }
+  constructor(private apiService:ApiService,private _snackBar: MatSnackBar,private router: Router) {
+    this.userDetails = JSON.parse(localStorage.getItem('user_details'));
+   }
 
   ngOnInit(): void {
     this.openPopup();
@@ -93,6 +95,7 @@ export class TicketComponent implements OnInit {
                       tickets:this.sTicket,
                       ticket_type:this.details.type,
                       amount:this.details.price,
+                      who:this.userDetails.username,
                     }
                     this.apiService.addTicket(addTicks).subscribe(
                       res => {

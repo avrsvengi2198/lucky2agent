@@ -1,0 +1,75 @@
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="nav-left-icon">
+            <a routerLink="/home"><i class="fas fa-arrow-left"></i></a>
+        </div>
+
+        <div class="page-title">
+            <h5>Ticket</h5>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="nav-right-icon">
+            <i class="fas fa-ticket-alt"></i>
+        </div>
+    </div>
+</div>
+
+<div class="ticket-page">
+    <div class="page-class">
+        <div class="load-spinner" *ngIf="spinner">
+            <mat-spinner strokeWidth="3" diameter="35" class="spinner-circle" ></mat-spinner>
+        </div>
+        <!-- Ticket starts -->
+        <div class="ticket-card" *ngFor="let ticks of tickList" (click)="openPopup(ticks.lid);">
+            <div ngClass="{{ticks.status == 1?'ticket-info bg-red':'ticket-info'}}" class="">
+                <div class="tick-details">
+                    <h4>{{ticks.lottery_name}}</h4>
+                    <p>{{ticks.lottery_date}}</p>
+    
+                    <div class="ticket-count">
+                        <h5>Total Tickets - {{ticks.ticket_count}}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tick-btn">
+                <button>Details</button>
+            </div>
+        </div>
+        <!-- Ticket Ends -->
+
+        <a routerLink="/ticket"  class="report-request-btn req-left">
+            <i class="fas fa-plus"></i>
+        </a>
+
+    </div>
+</div>
+
+<div class="cm-bottom-sheet ticket-dts-sheet full-h-sheet" [ngClass]="status ? 'open-checker' : 'close-checker'">
+    <div class="close-space" (click)="closePopup();"></div>                
+    <div class="popup">
+        <button class="close-bar close-icon" (click)="closePopup();"><i class="fas fa-times"></i></button>
+         <div class="cm-sheet-content">
+            <h4><i class="fas fa-ticket-alt"></i>{{title}}</h4>
+
+            <div class="" *ngFor="let tic of Ticket;let i = index">
+
+                <div  *ngFor="let tick of tic.ticket;">
+                    <div class="" ngClass="{{tic.type == 0?'pin-row ':'pin-row agent-tic'}}" >
+                        <label class="pin-share-check">
+                            <input type="checkbox" name="ticket"  id="sharecheck" disabled>
+                            <div class="pin-selected">
+                                <div class="pin-details">
+                                    <h5 class="copy-pin"><span class="copy-text">{{tick}}</span></h5>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+    </div>
+</div>

@@ -55,6 +55,16 @@ button:focus, button:hover{
 .m-t-20{
     margin-top: 20px !important;
 }
+
+.bg-red{
+    background: #ff0000 !important;
+    color: #fff !important;
+}
+
+.bg-red h4{
+    color: #fff !important;
+}
+
 .page-class {
     padding-top: 80px;
     padding-left: 20px;
@@ -1137,8 +1147,7 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
 .mat-btn-group {
     display: flex;
 }
-.mat-btn-group .mat-form-field {
-}
+
 .mat-group-sec{
     width: 20%;
     padding-left: 15px;
@@ -1233,3 +1242,130 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
     font-family: var(--site-font);
     color: var(--main-color);
 }
+
+.ticket-page .req-left{
+    right: unset;
+    left: 20px;
+}
+
+.agent-tic .pin-share-check .pin-selected{
+    background:var(--main-grad-lg);
+ }
+ .agent-tic .pin-share-check .pin-selected .pin-details h5{
+     color: #ffffff;
+ }
+
+/*** Timmer start **/
+.countdown.show .running {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: wrap;
+        flex-flow: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  
+  .countdown.show .running timer {
+    font-size: 55px;
+    font-weight: 600;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    line-height: 1;
+    color: #8c0734;
+  }
+  
+  .countdown.show .running timer .days,
+  .countdown.show .running timer .hours,
+  .countdown.show .running timer .minutes,
+  .countdown.show .running timer .seconds{
+    width: 70px;
+    text-align: left;
+    margin: 0 7px;
+  }
+  
+  @media (max-width: 480px) {
+    .countdown.show .running timer  {
+      font-size: 40px;
+    }
+    .countdown.show .running timer .days,
+    .countdown.show .running timer .hours,
+    .countdown.show .running timer .minutes,
+    .countdown.show .running timer .seconds {
+      width: 49px;
+    }
+  }
+  
+  .countdown.show .running .labels{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 14px;
+  }
+  
+  .countdown.show .running .labels span{
+    width: 97px;
+    text-align: center;
+    margin: 0px 2px;
+  }
+  
+  @media (max-width: 480px) {
+    .countdown.show .running .labels span{
+      width: 69px;
+    }
+  }
+  
+  .countdown.show .running .text{
+    font-size: 20px;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+  
+  .countdown.show .running button{
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 10px;
+  }
+  
+  .countdown.show .running .break{
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    height: 0;
+  }
+  
+  .countdown.show .ended{
+    display: none;
+    -ms-flex-flow: wrap;
+        flex-flow: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  
+  .countdown.show .ended .text{
+    font-size: 20px;
+  }
+  
+  .countdown.show .ended button {
+    border: none;
+    background-color: #5a0000;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 10px;
+  }
+  
+  .countdown.show .ended .break{
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    height: 0;
+  }
+  .container { margin: 150px auto; }
+
+
+ /** Timmer end **/
