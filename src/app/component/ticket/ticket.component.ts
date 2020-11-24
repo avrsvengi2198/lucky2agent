@@ -15,18 +15,21 @@ export class TicketComponent implements OnInit {
   pLottory : any = []; Ticket : any = []; spinner:boolean = false;
   availabelTick : number = 0;  lotteryType : any = ['Silver','Gold','Platinum'];
   ticketPrice:number = 0; manuSel : boolean = false; userDetails:any;
+  btypeSel:boolean = false; agentCommis:any = 0;
   getname = {
     mobile_no:''
   }
 
   details = {
+    btype:'',
     lottery_id:'',
     user:'',
     uname:'',
     ticket_count:'',
     type:'',
     ltype:'',
-    price:0
+    price:0,
+    user_id:''
   }
 
   openPopup(){
@@ -39,6 +42,7 @@ export class TicketComponent implements OnInit {
 
   constructor(private apiService:ApiService,private _snackBar: MatSnackBar,private router: Router) {
     this.userDetails = JSON.parse(localStorage.getItem('user_details'));
+    this.details.user_id = this.userDetails.id;
    }
 
   ngOnInit(): void {
@@ -83,53 +87,68 @@ export class TicketComponent implements OnInit {
   }
 
   createTicket(){
-    if(this.details.user !=''){
-        if(this.details.lottery_id !=''){
-            if(this.details.ticket_count !=''){
-                if(this.sTicket.length !=0){
-                  this.spinner = true;
-                    let addTicks = {
-                      ticket_count:this.details.ticket_count,
-                      user:this.details.user,
-                      lottery_id:this.details.lottery_id,
-                      tickets:this.sTicket,
-                      ticket_type:this.details.type,
-                      amount:this.details.price,
-                      who:this.userDetails.username,
-                    }
-                    this.apiService.addTicket(addTicks).subscribe(
-                      res => {
-                        this.spinner = false;
-                        if(res.Status =="Failure"){
-                          this._snackBar.open(res.Message,'', {
-                            duration: 3000,
-                          });
-                          this.router.navigateByUrl('home');
-                        }else{
-                          this.router.navigateByUrl('buySuccess/'+res.Response[0].amount);
+    if(this.details.btype !=''){
+        if(this.details.user !=''){
+            if(this.details.lottery_id !=''){
+                if(this.details.ticket_count !=''){
+                    if(this.sTicket.length !=0){
+                      this.spinner = true;
+                        let addTicks = {
+                          types:this.details.btype,
+                          ticket_count:this.details.ticket_count,
+                          user:this.details.user,
+                          lottery_id:this.details.lottery_id,
+                          tickets:this.sTicket,
+                          ticket_type:this.details.type,
+                          amount:this.details.price,
+                          who:'',
+                          type:'Agent',
+                          agentCommis:this.Lottery[0].agentCommis,
                         }
-                      },err => console.log(err));
+                      if(this.details.btype == 'user'){
+                          addTicks.who = this.userDetails.username;
+                      }else{
+                        addTicks.who = null;
+                      }
+
+                        this.apiService.addTicket(addTicks).subscribe(
+                          res => {
+                            this.spinner = false;
+                            if(res.Status =="Failure"){
+                              this._snackBar.open(res.Message,'', {
+                                duration: 3000,
+                              });
+                              this.router.navigateByUrl('home');
+                            }else{
+                              this.router.navigateByUrl('buySuccess/'+res.Response[0].amount);
+                            }
+                          },err => console.log(err));
+
+                    }else{
+                      this._snackBar.open('Select Lottery !!','', {
+                        duration: 3000,
+                      });
+                    }
                 }else{
-                  this._snackBar.open('Select Lottery !!','', {
+                  this._snackBar.open('Enter Ticket Count !!','', {
                     duration: 3000,
                   });
                 }
             }else{
-              this._snackBar.open('Enter Ticket Count !!','', {
+              this._snackBar.open('Select Lottery !!','', {
                 duration: 3000,
               });
             }
         }else{
-          this._snackBar.open('Select Lottery !!','', {
+          this._snackBar.open('Enter Mobile No !!','', {
             duration: 3000,
           });
         }
     }else{
-      this._snackBar.open('Enter Mobile No !!','', {
+      this._snackBar.open('Please Select Buy type !!','', {
         duration: 3000,
       });
     }
-
   }
 
   //get user name
@@ -177,7 +196,6 @@ export class TicketComponent implements OnInit {
                       let randTick = this.Ticket[Math.floor(Math.random() * this.Ticket.length)];                      
                       this.sTicket.push(randTick);
                     }
-                    console.log(this.sTicket);
                   }
                }
           }else{
@@ -200,20 +218,50 @@ export class TicketComponent implements OnInit {
   
   //get particular lottry
   getParticlot(){
-    if(this.details.lottery_id !=''){
-      let getT = {lottery_id:this.details.lottery_id}
-      this.apiService.getTickets(getT).subscribe(
-        res => {
-          this.Ticket = res.Response;
-          this.availabelTick = res.Message;
-        },err => console.log(err));
-      this.pLottory = this.Lottery.find(element => element.id == this.details.lottery_id);
-      this.ticketPrice = this.pLottory.ticketPrice;
+    if(this.details.btype !=''){
+          if(this.details.lottery_id !=''){
+            let getT = {
+              types :'Agent',
+              type:this.details.btype,
+              lottery_id:this.details.lottery_id,
+              user_id:this.details.user_id,
+              username:this.userDetails.username,
+            }
+      
+            this.apiService.getTickets(getT).subscribe(
+              res => {
+                if(res.Message != 0){
+                  this.Ticket = res.Response;
+                  this.availabelTick = res.Message;
+                }else{
+                  location.reload()
+                  if(this.details.btype == 'user'){
+                    this._snackBar.open('Buy Ticket !!','', {
+                      duration: 3000,
+                    });
+                  }else{
+                    this._snackBar.open('No Ticket Available !!','', {
+                      duration: 3000,
+                    });
+                  }
+                }
+              
+              },err => console.log(err));
+      
+            this.pLottory = this.Lottery.find(element => element.id == this.details.lottery_id);
+            this.ticketPrice = this.pLottory.ticketPrice;
+          }else{
+            this._snackBar.open('Select Lottery !!','', {
+              duration: 3000,
+            });
+          }
     }else{
-      this._snackBar.open('Select Lottery !!','', {
+       location.reload()
+      this._snackBar.open('Select Buy Type !!','', {
         duration: 3000,
       });
     }
+
   }
 
 /* //generate ticket
@@ -235,7 +283,7 @@ pad(num, size) {
 //check max count
 checkMaxcount(){
   if(this.details.lottery_id !=''){
-    if( Number(this.availabelTick) <= Number(this.details.ticket_count) ){
+    if( Number(this.availabelTick) < Number(this.details.ticket_count) ){
       $('#tCount').val('');
       $('#tCount').focus();
       this.details.price = 0;
@@ -243,7 +291,17 @@ checkMaxcount(){
         duration: 3000,
       });
     }else{
-      this.details.price = Number(this.details.ticket_count) * Number(this.ticketPrice);
+      if(this.details.btype == 'agent'){
+        this.agentCommis = this.Lottery[0].agentCommis / 100;
+        let calPrice = Number(this.details.ticket_count) * Number(this.ticketPrice);
+        let commis = Number(calPrice) *  this.agentCommis;
+        this.details.price = Number(calPrice) - Number(commis);
+
+      }else{
+        this.details.price = Number(this.details.ticket_count) * Number(this.ticketPrice);
+        
+      }
+     
     }
   }else{
     $('#tCount').val('');
@@ -275,6 +333,22 @@ storeTicket(pin,event){
         }
       });
     }
+}
+
+showDetails(btype){
+  if(btype !=''){
+      if(btype == 'agent'){
+          this.details.user = this.userDetails.username;
+          this.details.uname = this.userDetails.name;
+          this.btypeSel = true;
+      }else{
+        this.btypeSel = false;
+      }
+  }else{
+    this._snackBar.open('Please Select Buy type !','', {
+      duration: 3000,
+    });
+  }
 }
 
 

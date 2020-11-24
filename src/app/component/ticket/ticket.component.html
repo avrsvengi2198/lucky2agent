@@ -5,7 +5,7 @@
         </div>
 
         <div class="page-title">
-            <h5>Add Ticket</h5>
+            <h5>Ticket's</h5>
         </div>
     </div>
 
@@ -23,6 +23,19 @@
     <div class="profile-page">
         <div class="profile-form">
             <form (submit)="createTicket()">
+                    <div class="w-radio-row">
+                    <label class="w-radio-btn">
+                        <input type="radio" class="booking-title" id="pw" value="user" [(ngModel)]="details.btype" (click)="showDetails('user')"  name="btype"> 
+                        <span class="w-radio-check"></span>
+                        Selling Tickets
+                    </label>
+            
+                    <label class="w-radio-btn">
+                        <input type="radio" class="booking-title" id="pw" value="agent" [(ngModel)]="details.btype"  (click)="showDetails('agent')"  name="btype" >
+                        <span class="w-radio-check"></span>
+                        Buy Tickets
+                    </label>  
+                    </div>
                 <mat-form-field>
                     <mat-label>Select Lottery Type</mat-label>
                     <mat-select  (selectionChange)="getLottery()" name="ltype" [(ngModel)]="details.ltype" id="ltype"  required >
@@ -42,7 +55,7 @@
 
                 <mat-form-field>
                     <mat-label>User Mobile</mat-label>
-                    <input matInput name="user" [(ngModel)]="details.user" type="text" (change)="getName()" required >
+                    <input matInput name="user" [(ngModel)]="details.user" type="text" (change)="getName()"  required  [readonly]="btypeSel?'true':'false'">
                   </mat-form-field>
 
                   <mat-form-field>
@@ -114,3 +127,4 @@
          </div>
     </div>
 </div>
+ 

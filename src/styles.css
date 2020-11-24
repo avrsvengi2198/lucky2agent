@@ -858,7 +858,7 @@ button:focus, button:hover{
 }
 .cm-bottom-sheet button.close-bar {
     background: unset;
-    color: #ddd;
+    color: #777777;
     font-weight: unset;
     padding: 0;
     letter-spacing: 0;
@@ -1369,3 +1369,49 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
 
 
  /** Timmer end **/
+
+ 
+/* yes or no button css */
+.w-radio-row{
+    margin-bottom: 25px;
+    display: flex;
+}
+.w-radio-btn {
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+    font-weight: 500;
+}
+.w-radio-check {
+    display: inline-block;
+}
+.w-radio-btn input{
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+.w-radio-check {
+    text-align: center;
+    padding: 3px;
+    border: 2px solid var(--main-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+}
+.w-radio-btn input:checked ~ .w-radio-check:before {
+    background: var(--grad-bg);
+    border: 2px solid var(--main-color);
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}

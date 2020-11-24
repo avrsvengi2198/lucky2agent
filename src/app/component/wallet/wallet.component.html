@@ -19,76 +19,25 @@
 
     
 <div class="wallet-page">
+    <div class="load-spinner" *ngIf="spinner">
+        <mat-spinner strokeWidth="3" diameter="35" class="spinner-circle" ></mat-spinner>
+    </div>
     <div class="wallet-amount">
-        <h2>&#x20B9; 125 /-</h2>
+        <h2>&#x20B9; {{totalPrice}} /-</h2>
         <p>Wallet Amount</p>
     </div>
 
     <div class="wallet-list-sec">
 
-        <div class="wallet-list">
+        <div class="wallet-list" *ngFor="let wal of wallet">
             <div class="w-details">
-                <h5>Vengadesh</h5>
-                <p>19.11.2020</p>
+                <h5>{{wal.username}}</h5>
+                <h5>{{wal.lottery_name}} - {{wal.ticketCount}}</h5>
+                <p><i class="fa fa-calendar" aria-hidden="true"></i> {{wal.date}}</p>
             </div>
 
             <div class="w-crd-amount">
-                &#x20B9; 25
-            </div>
-        </div>
-
-        <div class="wallet-list">
-            <div class="w-details">
-                <h5>Vengadesh</h5>
-                <p>19.11.2020</p>
-            </div>
-
-            <div class="w-crd-amount">
-                &#x20B9; 25
-            </div>
-        </div>
-
-        <div class="wallet-list">
-            <div class="w-details">
-                <h5>Vengadesh</h5>
-                <p>19.11.2020</p>
-            </div>
-
-            <div class="w-crd-amount">
-                &#x20B9; 25
-            </div>
-        </div>
-
-        <div class="wallet-list">
-            <div class="w-details">
-                <h5>Vengadesh</h5>
-                <p>19.11.2020</p>
-            </div>
-
-            <div class="w-crd-amount">
-                &#x20B9; 25
-            </div>
-        </div>
-
-        <div class="wallet-list">
-            <div class="w-details">
-                <h5>Vengadesh</h5>
-                <p>19.11.2020</p>
-            </div>
-
-            <div class="w-crd-amount">
-                &#x20B9; 25
-            </div>
-        </div>
-
-        <div class="wallet-list">
-            <div class="w-details">
-                <h5>Vengadesh</h5>
-                <p>19.11.2020</p>
-            </div>
-
-            <div class="w-crd-amount">
-                &#x20B9; 25
+                &#x20B9; {{wal.agentCom}}
             </div>
         </div>
 

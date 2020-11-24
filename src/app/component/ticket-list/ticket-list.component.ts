@@ -13,7 +13,7 @@ export class TicketListComponent implements OnInit {
   Ticket : any =[]; title:any ='';
   userDetails:any;
   getDet = {
-    type:'',
+    type:'Agent',
     mobile_no:''
   }
 
