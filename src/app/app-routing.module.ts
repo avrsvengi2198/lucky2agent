@@ -17,6 +17,7 @@ import { BuypageComponent } from './component/buypage/buypage.component';
 import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
 import { WalletComponent } from './component/wallet/wallet.component';
 import { TicketListComponent } from './component/ticket-list/ticket-list.component';
+import { AgentwinnerComponent } from './component/agentwinner/agentwinner.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent ,canActivate: [AuthGuard]  },
   { path: 'profilev', component: ProfilevComponent ,canActivate: [AuthGuard]  },
   { path: 'lotteryWinner', component: LotteryWinnerComponent ,canActivate: [AuthGuard]  },
+  { path: 'agentWinner', component: AgentwinnerComponent ,canActivate: [AuthGuard]  },
   { path: 'ticket', component: TicketComponent,canActivate: [AuthGuard] },
   { path: 'ticketList', component: TicketListComponent,canActivate: [AuthGuard] },
   { path: 'changePassword', component: ChangePasswordComponent ,canActivate: [AuthGuard] },

@@ -511,6 +511,11 @@ button:focus, button:hover{
     padding-left: 8px;
     padding-right: 8px;
 }
+.grid-col-50{
+    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .icon-grid-box {
     background: var(--main-grad);
     text-align: center;

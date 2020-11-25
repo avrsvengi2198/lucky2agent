@@ -133,6 +133,9 @@ export class ApiService {
 	winnerList(details):Observable<any>{ 
 		return this.httpClient.post<any>(this.server+'/winner_details.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
 	}
+	agentwinnerList(details):Observable<any>{ 
+		return this.httpClient.post<any>(this.server1+'/agentwinner.php', details, this.httpOptions).pipe(retry(0),catchError(this.errorHandl)); 
+	}
 
 
 	//getTickets

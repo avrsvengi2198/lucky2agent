@@ -1,1 +1,116 @@
-<p>agentwinner works!</p>
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="nav-left-icon">
+            <a routerLink="/home"><i class="fas fa-arrow-left"></i></a>
+        </div>
+
+        <div class="page-title">
+            <h5>Winner's List</h5>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="nav-right-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-class">
+    <div class="load-spinner" *ngIf="spinner">
+        <mat-spinner strokeWidth="3" diameter="35" class="spinner-circle" ></mat-spinner>
+    </div>
+    <div class="winner-page">
+
+       <mat-form-field>
+        <mat-label>Lottery Date</mat-label>
+            <input matInput [matDatepicker]="dp3" [(ngModel)]="dateReq" (dateChange)="getWinnerList()" [max]="yesterday" name="sdate" readonly  >
+            <mat-datepicker-toggle  matSuffix [for]="dp3" ></mat-datepicker-toggle>
+            <mat-datepicker [startAt]="dateReq" #dp3  ></mat-datepicker>
+        </mat-form-field>
+
+          <div *ngFor="let winner of winnerList">
+            <div *ngIf="winner.prize == 1" class="winner-card winner-card-details price-1st" >
+                <div class="win-icon">
+                    <img src="assets/icon/winner.svg" alt="winner">
+                </div>
+                <div class="win-details">
+                    <h4>{{winner.lottery_name}}</h4>
+                    <h4>{{winner.user}}</h4>
+                    <p>{{winner.ticket}}</p>
+                    <p>{{winner.lottery_date}}</p>
+                </div>
+                <div class="win-amount">
+                    &#x20B9; {{winner.amount}}
+                </div>
+    
+                <div *ngIf="winner.prize == 1" class="win-price">{{winner.prize}}<span>st</span></div>
+                <div *ngIf="winner.prize == 2" class="win-price">{{winner.prize}}<span>nd</span></div>
+                <div *ngIf="winner.prize == 3" class="win-price">{{winner.prize}}<span>rd</span></div>
+                <div *ngIf="winner.prize > 3" class="win-price">{{winner.prize}}<span>th</span></div>
+            </div>
+
+            <div *ngIf="winner.prize == 2" class="winner-card winner-card-details price-2nd" >
+                <div class="win-icon">
+                    <img src="assets/icon/winner.svg" alt="winner">
+                </div>
+                <div class="win-details">
+                    <h4>{{winner.lottery_name}}</h4>
+                    <h4>{{winner.user}}</h4>
+                    <p>{{winner.ticket}}</p>
+                    <p>{{winner.lottery_date}}</p>
+                </div>
+                <div class="win-amount">
+                    &#x20B9; {{winner.amount}}
+                </div>
+    
+                <div *ngIf="winner.prize == 1" class="win-price">{{winner.prize}}<span>st</span></div>
+                <div *ngIf="winner.prize == 2" class="win-price">{{winner.prize}}<span>nd</span></div>
+                <div *ngIf="winner.prize == 3" class="win-price">{{winner.prize}}<span>rd</span></div>
+                <div *ngIf="winner.prize > 3" class="win-price">{{winner.prize}}<span>th</span></div>
+            </div>
+
+            <div *ngIf="winner.prize == 3" class="winner-card winner-card-details price-3rd" >
+                <div class="win-icon">
+                    <img src="assets/icon/winner.svg" alt="winner">
+                </div>
+                <div class="win-details">
+                    <h4>{{winner.lottery_name}}</h4>
+                    <h4>{{winner.user}}</h4>
+                    <p>{{winner.ticket}}</p>
+                    <p>{{winner.lottery_date}}</p>
+                </div>
+                <div class="win-amount">
+                    &#x20B9; {{winner.amount}}
+                </div>
+    
+                <div *ngIf="winner.prize == 1" class="win-price">{{winner.prize}}<span>st</span></div>
+                <div *ngIf="winner.prize == 2" class="win-price">{{winner.prize}}<span>nd</span></div>
+                <div *ngIf="winner.prize == 3" class="win-price">{{winner.prize}}<span>rd</span></div>
+                <div *ngIf="winner.prize > 3" class="win-price">{{winner.prize}}<span>th</span></div>
+            </div>
+
+            <div *ngIf="winner.prize > 3" class="winner-card winner-card-details " >
+                <div class="win-icon">
+                    <img src="assets/icon/winner.svg" alt="winner">
+                </div>
+                <div class="win-details">
+                    <h4>{{winner.lottery_name}}</h4>
+                    <h4>{{winner.user}}</h4>
+                    <p>{{winner.ticket}}</p>
+                    <p>{{winner.lottery_date}}</p>
+                </div>
+                <div class="win-amount">
+                    &#x20B9; {{winner.amount}}
+                </div>
+    
+                <div *ngIf="winner.prize == 1" class="win-price">{{winner.prize}}<span>st</span></div>
+                <div *ngIf="winner.prize == 2" class="win-price">{{winner.prize}}<span>nd</span></div>
+                <div *ngIf="winner.prize == 3" class="win-price">{{winner.prize}}<span>rd</span></div>
+                <div *ngIf="winner.prize > 3" class="win-price">{{winner.prize}}<span>th</span></div>
+            </div>
+          </div>
+
+    </div>
+</div>
