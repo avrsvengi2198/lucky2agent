@@ -9,8 +9,12 @@ import { Router } from '@angular/router';
 })
 export class ApiService {
 
-  server 	= 'http://elanciereschool.in/lucky/app/users';
-  server1 	= 'http://elanciereschool.in/lucky/app/agent';
+//   server 	= 'http://elanciereschool.in/lucky/app/users';
+//   server1 	= 'http://elanciereschool.in/lucky/app/agent';.
+
+
+  server 	= 'https://back.adhiw.com/app/users';
+  server1 	= 'https://back.adhiw.com/app/agent';
 
   	// Http Headers
 	httpOptions = {
