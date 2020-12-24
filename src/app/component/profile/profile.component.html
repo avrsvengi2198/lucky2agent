@@ -37,6 +37,11 @@
                 <mat-label>Father Name</mat-label>
                 <input matInput type="text" >
               </mat-form-field> -->
+
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="text" [(ngModel)]="userUp.email" name="email"  >
+              </mat-form-field>
               
               <mat-form-field>
                 <mat-label>Mobile</mat-label>
@@ -82,7 +87,7 @@
                 <input matInput type="text" [(ngModel)]="userUp.city" name="city" >
               </mat-form-field>
     
-              <mat-form-field>
+              <!--<mat-form-field>
                 <mat-label> A/C No </mat-label>
                 <input matInput type="text" [(ngModel)]="userUp.bank_acc" name="bank_acc" >
               </mat-form-field>
@@ -105,7 +110,7 @@
               <mat-form-field>
                 <mat-label> Account Holder Name </mat-label>
                 <input matInput type="text" [(ngModel)]="userUp.acc_name" name="acc_name">
-              </mat-form-field>
+              </mat-form-field>-->
         </div>
     </div>
 </div>

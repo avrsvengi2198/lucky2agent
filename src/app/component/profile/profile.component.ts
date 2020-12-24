@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   userUp:any  = {
     id:'',
     name:'',
+    email:'',
     mobile:'',
     bank_acc:'',
     bank_name:'',
@@ -30,6 +31,7 @@ export class ProfileComponent implements OnInit {
     this.userUp = {
       id:this.userDetails.id,
       name:this.userDetails.name,
+      email:this.userDetails.email,
       mobile:this.userDetails.mobile,
       bank_acc:this.userDetails.bank_acc,
       bank_name:this.userDetails.bank_name,

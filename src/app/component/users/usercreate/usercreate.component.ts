@@ -17,6 +17,7 @@ export class UsercreateComponent implements OnInit {
 
   users:any  = {
     name:'',
+    email:'',
     mobile_no:'',
     bank_acc:'',
     bank_name:'',
@@ -52,6 +53,7 @@ export class UsercreateComponent implements OnInit {
      this.users  = {
         name:partiAgent.name,
         mobile_no:partiAgent.mobile_no,
+        email:partiAgent.email,
         bank_acc:partiAgent.bank_acc,
         bank_name:partiAgent.bank_name,
         branch_name:partiAgent.branch_name,

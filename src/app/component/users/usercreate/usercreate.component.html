@@ -27,6 +27,11 @@
                 <mat-label>Name</mat-label>
                 <input matInput type="text" [(ngModel)]="users.name" name="name">
               </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="text" [(ngModel)]="users.email" name="email" required >
+              </mat-form-field>
               
               <mat-form-field>
                 <mat-label>Mobile</mat-label>

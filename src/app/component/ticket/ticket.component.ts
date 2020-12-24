@@ -15,7 +15,7 @@ export class TicketComponent implements OnInit {
   pLottory : any = []; Ticket : any = []; spinner:boolean = false;
   availabelTick : number = 0;  lotteryType : any = ['Silver','Gold','Platinum'];
   ticketPrice:number = 0; manuSel : boolean = false; userDetails:any;
-  btypeSel:boolean = false; agentCommis:any = 0;
+  btypeSel:boolean = false; agentCommis:any = 0; gst:any='';
   getname = {
     mobile_no:''
   }
@@ -250,6 +250,7 @@ export class TicketComponent implements OnInit {
       
             this.pLottory = this.Lottery.find(element => element.id == this.details.lottery_id);
             this.ticketPrice = this.pLottory.ticketPrice;
+            this.gst = (this.pLottory.gst !='')?this.pLottory.gst:18;
           }else{
             this._snackBar.open('Select Lottery !!','', {
               duration: 3000,
@@ -295,10 +296,12 @@ checkMaxcount(){
         this.agentCommis = this.Lottery[0].agentCommis / 100;
         let calPrice = Number(this.details.ticket_count) * Number(this.ticketPrice);
         let commis = Number(calPrice) *  this.agentCommis;
-        this.details.price = Number(calPrice) - Number(commis);
-
+        let gst =  Number(calPrice) * (this.gst / 100);
+        this.details.price = Number(calPrice) - Number(commis) + Number(gst);
       }else{
-        this.details.price = Number(this.details.ticket_count) * Number(this.ticketPrice);
+        let calPrice = Number(this.details.ticket_count) * Number(this.ticketPrice);
+        let gst =  Number(calPrice) * (this.gst / 100);
+        this.details.price = Number(calPrice) + Number(gst);
         
       }
      
