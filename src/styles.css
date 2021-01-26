@@ -1420,3 +1420,49 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
     top: 50%;
     transform: translate(-50%,-50%);
 }
+
+/* card design */
+.reqlist li {
+    list-style: none;
+    display: block;
+    margin-bottom: 15px;
+}
+.cm-card {
+    box-shadow: 0px 3px 14px rgba(0 0 0/0.2);
+    padding: 10px 15px;
+    border-radius: 7px;
+}
+.cm-col-card {
+    /* display: flex; */
+    align-items: center;
+}
+.card-lft-img img {
+    width: 100%;
+    height: 225px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    /* box-shadow: 1px 1px 5px rgb(0 0 0/0.2); */
+    border-radius: 5px;
+}
+.card-rgt-content {
+    /* padding-left: 20px;
+    width: calc(100% - 62px); */
+    overflow-x: hidden;
+    line-height: 1.5;
+    padding: 5px 10px
+}
+.card-rgt-content h4 {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.card-rgt-content p{
+    color: #777777;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.card-arrow {
+    font-size: 24px;
+    color: var(--main-color);
+}

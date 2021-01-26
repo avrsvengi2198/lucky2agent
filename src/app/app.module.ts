@@ -33,6 +33,7 @@ import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
 import { TicketListComponent } from './component/ticket-list/ticket-list.component';
 import { LotteryComponent } from './component/lottery/lottery.component';
 import { AgentwinnerComponent } from './component/agentwinner/agentwinner.component';
+import { ShopComponent } from './component/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AgentwinnerComponent } from './component/agentwinner/agentwinner.compon
     TicketListComponent,
     LotteryComponent,
     AgentwinnerComponent,
+    ShopComponent,
   ],
   imports: [
     BrowserModule,

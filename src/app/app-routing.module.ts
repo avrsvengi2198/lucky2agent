@@ -18,6 +18,7 @@ import { LuckydrawComponent } from './component/luckydraw/luckydraw.component';
 import { WalletComponent } from './component/wallet/wallet.component';
 import { TicketListComponent } from './component/ticket-list/ticket-list.component';
 import { AgentwinnerComponent } from './component/agentwinner/agentwinner.component';
+import { ShopComponent } from './component/shop/shop.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'buySuccess/:amount', component: BuypageComponent,canActivate: [AuthGuard] },
   { path: 'spinner/:id', component: LuckydrawComponent,canActivate: [AuthGuard] },
   { path: 'wallet', component: WalletComponent,canActivate: [AuthGuard] },
+  { path: 'shop', component: ShopComponent,canActivate: [AuthGuard] },
 
 
 ];

@@ -1,0 +1,42 @@
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="nav-left-icon">
+            <a routerLink="/home"><i class="fas fa-arrow-left"></i></a>
+        </div>
+
+        <div class="page-title">
+            <h5>Shop Now</h5>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="nav-right-icon">
+            <i class="fa fa-cart-plus"></i>
+        </div>
+    </div>
+</div>
+
+    <div class="page-class">
+        <div class="load-spinner" *ngIf="spinner">
+            <mat-spinner strokeWidth="3" diameter="35" class="spinner-circle" ></mat-spinner>
+        </div>
+
+        <div class="reqlist">
+            <ul>
+                <li  *ngFor="let rwd of product">
+                    <div class="cm-card cm-col-card">
+                        <div class="card-lft-img">
+                            <img src="{{rwd.photo}}" width="100px" alt="{{rwd.lottery_name}}" />
+                        </div>
+                        <div class="card-rgt-content">
+                                <h4>{{rwd.lottery_name}}</h4>
+                                <p>Rs.{{rwd.ticketPrice}}</p>
+                                <a routerLink="/ticket" class="btn-style">Shop Now</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+
+    </div>

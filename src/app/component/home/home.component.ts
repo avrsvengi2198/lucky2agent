@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
  constructor(private apiService:ApiService) { 
       this.userDetails = JSON.parse(localStorage.getItem('user_details'));
-      if (!localStorage.getItem('date')) { 
+    /*  if (!localStorage.getItem('date')) { 
         location.reload() 
       } else{
         if (!localStorage.getItem('foo')) { 
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         } else {
           localStorage.removeItem('foo') 
         } 
-      }
+      }*/
       this.date = localStorage.getItem('date');
   }
 
