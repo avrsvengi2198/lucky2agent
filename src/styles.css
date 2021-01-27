@@ -1466,3 +1466,74 @@ simple-snack-bar .mat-simple-snackbar.ng-star-inserted span {
     font-size: 24px;
     color: var(--main-color);
 }
+
+/* card design */
+.reqlist li {
+    list-style: none;
+    display: block;
+    margin-bottom: 15px;
+}
+.cm-card {
+    box-shadow:0px 3px 10px rgba(0 0 0/0.15);
+    padding: 10px 15px 0px;
+    border-radius: 7px;
+}
+.cm-col-card {
+    display: flex;
+    align-items: center;
+}
+.card-lft-img img {
+    width: 100%;
+    height: 225px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    box-shadow: 1px 1px 5px rgb(0 0 0/0.2);
+    border-radius: 5px;
+    height: 80px;
+    width: 80px;
+}
+.card-rgt-content {
+    overflow-x: hidden;
+    line-height: 1.5;
+    padding: 5px 10px 10px;
+    width: calc(100% - 75px);
+    padding-left: 20px;
+}
+.card-rgt-content h4 {
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+.card-rgt-content p{
+    color: #777777;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.card-arrow {
+    font-size: 24px;
+    color: var(--main-color);
+}
+
+.icon-grid-box{
+    flex-direction: column;
+}
+.icon-grid-box h5{
+    white-space: nowrap;
+    margin-top: 5px;
+}
+.page-title h5{
+    white-space: nowrap;
+}
+.card-rgt-content .btn-style {
+    padding: 6px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 7px;
+}
+.grid-col{
+    padding-left: 5px;
+    padding-right: 5px;
+}
