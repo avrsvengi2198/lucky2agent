@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef,NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { ExternalLibraryService } from './../../util';
 declare var $: any;
+declare let Razorpay: any;
 
 
 @Component({
@@ -15,7 +17,7 @@ export class TicketComponent implements OnInit {
   pLottory : any = []; Ticket : any = []; spinner:boolean = false;
   availabelTick : number = 0;  lotteryType : any = ['Silver','Gold','Platinum'];
   ticketPrice:number = 0; manuSel : boolean = false; userDetails:any;
-  btypeSel:boolean = false; agentCommis:any = 0; gst:any='';
+  btypeSel:boolean = false; agentCommis:any = 0; gst:any=''; email ='';
   getname = {
     mobile_no:''
   }
@@ -29,8 +31,13 @@ export class TicketComponent implements OnInit {
     type:'',
     ltype:'',
     price:0,
-    user_id:''
+    user_id:'',
+    trans_id:''
   }
+
+  response;
+  razorpayResponse;
+  showModal = false;
 
   openPopup(){
     this.status = true;
@@ -40,14 +47,17 @@ export class TicketComponent implements OnInit {
     this.status = false;
   }
 
-  constructor(private apiService:ApiService,private _snackBar: MatSnackBar,private router: Router) {
+  constructor(private apiService:ApiService,private _snackBar: MatSnackBar,private router: Router,private razorpayService: ExternalLibraryService, private cd:  ChangeDetectorRef,private ngZone:NgZone) {
     this.userDetails = JSON.parse(localStorage.getItem('user_details'));
     this.details.user_id = this.userDetails.id;
+    this.email = this.userDetails.email;
    }
 
   ngOnInit(): void {
     this.openPopup();
     this.closePopup();
+
+    this.razorpayService.lazyLoadLibrary('https://checkout.razorpay.com/v1/checkout.js') .subscribe();
    
 
     // this.apiService.lotteryList().subscribe(
@@ -58,6 +68,50 @@ export class TicketComponent implements OnInit {
     // );
 
   }
+
+
+  /*** RAZORPAY */
+  RAZORPAY_OPTIONS = {
+    "key": "rzp_test_OegT5x6ZBDVE5X",
+    "amount": 1,
+    "name": "Adhiw",
+    "order_id": "",
+    "description": "Buy Ticks",
+    "image": "assets/img/adhiw.png",
+    "prefill": {
+      "name": this.details.uname,
+      "email": this.email,
+      "contact": this.details.user,
+      "method": ""
+    },
+    "modal": {},
+    "theme": {
+      "color": "#0096C5"
+    }
+  };
+
+  public proceed() {
+   var rpay = this.details.price * (100);
+   this.RAZORPAY_OPTIONS.amount = rpay;
+    // binding this object to both success and dismiss handler
+    this.RAZORPAY_OPTIONS['handler'] = this.razorPaySuccessHandler.bind(this);
+    // this.showPopup();
+    let razorpay = new Razorpay(this.RAZORPAY_OPTIONS)
+    razorpay.open();
+  }
+
+  public razorPaySuccessHandler(response) {
+    //console.log(response.razorpay_payment_id);
+    //console.log(response)
+    this.razorpayResponse = 'Razorpay Response';
+    this.details.trans_id = response.razorpay_payment_id;
+    this.showModal = true;
+    //this.cd.detectChanges()
+    this.buyticketSave();
+  }
+
+
+  /*** */
 
   //getLottery
 
@@ -92,38 +146,7 @@ export class TicketComponent implements OnInit {
             if(this.details.lottery_id !=''){
                 if(this.details.ticket_count !=''){
                     if(this.sTicket.length !=0){
-                      this.spinner = true;
-                        let addTicks = {
-                          types:this.details.btype,
-                          ticket_count:this.details.ticket_count,
-                          user:this.details.user,
-                          lottery_id:this.details.lottery_id,
-                          tickets:this.sTicket,
-                          ticket_type:this.details.type,
-                          amount:this.details.price,
-                          who:'',
-                          type:'Agent',
-                          agentCommis:this.Lottery[0].agentCommis,
-                        }
-                      if(this.details.btype == 'user'){
-                          addTicks.who = this.userDetails.username;
-                      }else{
-                        addTicks.who = null;
-                      }
-
-                        this.apiService.addTicket(addTicks).subscribe(
-                          res => {
-                            this.spinner = false;
-                            if(res.Status =="Failure"){
-                              this._snackBar.open(res.Message,'', {
-                                duration: 3000,
-                              });
-                              this.router.navigateByUrl('home');
-                            }else{
-                              this.router.navigateByUrl('buySuccess/'+res.Response[0].amount);
-                            }
-                          },err => console.log(err));
-
+                      this.proceed();
                     }else{
                       this._snackBar.open('Select Lottery !!','', {
                         duration: 3000,
@@ -149,6 +172,47 @@ export class TicketComponent implements OnInit {
         duration: 3000,
       });
     }
+  }
+
+  buyticketSave(){
+    this.spinner = true;
+    let addTicks = {
+      types:this.details.btype,
+      ticket_count:this.details.ticket_count,
+      user:this.details.user,
+      lottery_id:this.details.lottery_id,
+      tickets:this.sTicket,
+      ticket_type:this.details.type,
+      amount:this.details.price,
+      who:'',
+      type:'Agent',
+      agentCommis:this.Lottery[0].agentCommis,
+      trans_id:this.details.trans_id
+    }
+  if(this.details.btype == 'user'){
+      addTicks.who = this.userDetails.username;
+  }else{
+    addTicks.who = null;
+  }
+
+    this.apiService.addTicket(addTicks).subscribe(
+      res => {
+        this.spinner = false;
+        if(res.Status =="Failure"){
+          this._snackBar.open(res.Message,'', {
+            duration: 3000,
+          });
+         // this.router.navigateByUrl('home');
+          this.ngZone.run(()=>this.navigateTo('/ticket'));
+        }else{
+          this.ngZone.run(()=>this.navigateTo('/buySuccess/'+res.Response[0].amount));
+          //this.router.navigateByUrl('buySuccess/'+res.Response[0].amount);
+        }
+      },err => console.log(err));
+  }
+
+  navigateTo(url){
+    this.router.navigate([url]);
   }
 
   //get user name
