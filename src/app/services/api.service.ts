@@ -13,8 +13,8 @@ export class ApiService {
 //   server1 	= 'http://elanciereschool.in/lucky/app/agent';.
 
 
-  server 	= 'https://www.adhiw.com/aran/app/users';
-  server1 	= 'https://www.adhiw.com/aran/app/agent';
+  server 	= 'http://aran.adhiw.com/app/users';
+  server1 	= 'http://aran.adhiw.com/app/agent';
 
   	// Http Headers
 	httpOptions = {
